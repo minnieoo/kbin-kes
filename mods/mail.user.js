@@ -57,7 +57,7 @@ function checkItems(selector) {
   });
 }
 
-let megamod = {addMail: addMail}
+let megamod += {addMail: addMail}
 
 function addMail(toggle){
     console.log(toggle);
