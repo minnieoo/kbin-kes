@@ -30,7 +30,7 @@ function createMags(){
     }
 }
 
-let megamod = {initMags: initMags}
+let megamod += {initMags: initMags}
 
 function initMags(toggle){
     if (toggle == false) {
