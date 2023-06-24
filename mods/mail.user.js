@@ -65,5 +65,3 @@ function addMail(toggle){
         checkItems(itemsSelector);
     }
 }
-
-megamod.addMail: addMail
