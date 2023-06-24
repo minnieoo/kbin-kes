@@ -57,6 +57,8 @@ function checkItems(selector) {
   });
 }
 
+let megamod = {addMail: addMail}
+
 function addMail(toggle){
     console.log(toggle);
     if (toggle == false) {
@@ -65,4 +67,3 @@ function addMail(toggle){
         checkItems(itemsSelector);
     }
 }
-
