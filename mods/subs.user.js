@@ -30,6 +30,8 @@ function createMags(){
     }
 }
 
+let megamod = {initMags: initMags}
+
 function initMags(toggle){
     if (toggle == false) {
         $('.subs-nav').remove();
