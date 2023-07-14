@@ -20,7 +20,8 @@ function resizeText() {
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
         posts: `${settings["optionPosts"]}px`,
-        magSidebar: `${settings["optionMagSidebar"]}px`
+        magSidebar: `${settings["optionMagSidebar"]}px`,
+        homeSidebar: `${settings["optionHomeSidebar"]}px`
       };
 
 
@@ -92,6 +93,26 @@ function resizeText() {
 
     modSidebar.forEach(mods => {
         mods.style.fontSize = fontSizes.magSidebar;
+    })
+
+// === HOMEPAGE SIDEBAR === //
+
+    // homepage sidebar *variables*
+    const homepageSidebarMain = document.querySelectorAll('aside#sidebar section.related-magazines');
+    const homeActiveUsers = document.querySelectorAll('aside#sidebar section.active-users');
+
+    // homepage sidebar loops
+    homepageSidebarMain.forEach(homepageSidebarElem => {
+            const homeRelatedMags = homepageSidebarElem.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
+
+            homeRelatedMags.forEach(relatedMagElem => {
+                relatedMagElem.style.fontSize = optionHomeSidebar;
+            });
+    })
+
+    homeActiveUsers.forEach(activeUserElem => {
+        const activeUser = activeUserElem.querySelectorAll('h3');
+        activeUser.style.fontSize = optionHomeSidebar;
     })
 
 
