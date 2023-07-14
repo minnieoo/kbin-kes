@@ -19,7 +19,7 @@ function resizeText() {
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
-        content: `${settings["optionContent"]}px`,
+        posts: `${settings["optionPosts"]}px`,
         magSidebar: `${settings["optionMagSidebar"]}px`
       };
 
