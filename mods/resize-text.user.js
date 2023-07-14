@@ -15,13 +15,40 @@
 
 
 resizeText() {
+    // settings
+    const settingsHeader = getModSettings("optionHeader");
+    const headerFontSize = settings["optionHeader"]
+
+
     
+
+
+
+    // === HEADER === //
+    function headerResize() {
+        // main header elems
+        const topHeader = document.querySelectorAll('#header.header'); // selects elem w id header and class header
+        const threadMenu = document.querySelectorAll('menu.options__main'); // 
+        // internal header elems
+        const topHeaderElems = topHeader.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
+        const threadMenuElems = threadMenu.querySelectorAll('li, a');
+    
+        // loops
+        topHeaderElems.forEach(headerElem => {
+            headerElem.style.fontSize = `${headerFontSize}pt`;       
+        });
+    } //end headerResize()
+
+    
+
 
 
   
 }
 
-  
+
+
+
   function addStep() {
     const headerStep = document.querySelector('input[kes-key="optionHeader"]');
     headerStep.setAttribute('steps', '.1');
