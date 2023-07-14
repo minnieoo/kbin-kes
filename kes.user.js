@@ -86,7 +86,8 @@ const funcObj = {
     numbersInit: numbersInit,
     toggleLogo: toggleLogo,
     updateTime: updateTime,
-    userInstanceEntry: userInstanceEntry
+    userInstanceEntry: userInstanceEntry,
+    textResize: textResize
 };
 //END AUTO MASTHEAD
 function fetchManifest() {
