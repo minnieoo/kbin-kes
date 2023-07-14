@@ -51,21 +51,21 @@ function resizeText() {
 
 // === POSTS === //
     // post *variables*
-    const content = document.querySelectorAll('article.entry');
+    const postContent = document.querySelectorAll('article.entry');
 
     // post *loops*
-    content.forEach(header => {
-        const textContentElements = header.querySelectorAll('h1, h3, p, a, time, button:not([data-action="subject#vote"])');
-        const textContentH2 = header.querySelectorAll('span.entry__domain, h2 a');
-        const voteText = header.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
+    postContent.forEach(postContentElem => {
+        const textContentElements = postContentElem.querySelectorAll('h1, h3, p, a, time, button:not([data-action="subject#vote"])');
+        const textContentH2 = postContentElem.querySelectorAll('span.entry__domain, h2 a');
+        const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
 
-        textContentElements.forEach(textElem => {
-            textElem.style.fontSize = fontSizes.posts;
+        textContentElements.forEach(textContentElem => {
+            textContentElem.style.fontSize = fontSizes.posts;
         });
 
-        textContentH2.forEach(textH2 => {
+        textContentH2.forEach(textContentH2 => {
             const postSizeNum = settings["optionPosts"];
-            textH2.style.fontSize = `${postSizeNum * 1.2}pt`;
+            textContentH2.style.fontSize = `${postSizeNum * 1.2}pt`;
         });
 
         voteText.forEach(textVote => {
@@ -74,6 +74,26 @@ function resizeText() {
         });
 
     });
+
+// === MAG SIDEBAR === //
+
+    // mag sidebar *variables*
+    const magSidebar = document.querySelectorAll('aside#sidebar section.magazine.section');
+    const magName = document.querySelectorAll('aside#sidebar section.magazine.section a');
+    const modSidebar = document.querySelectorAll('aside#sidebar .user-list');
+
+    // mag side bar *loops*
+    magSidebar.forEach(sidebar => {
+        sidebar.style.fontSize = 
+    })
+
+    magName.forEach(mag => {
+        mag.style.fontSize = '';
+    })
+
+    modSidebar.forEach(mods => {
+        mods.style.fontSize = '';
+    })
 
 
 
