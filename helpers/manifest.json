@@ -605,6 +605,15 @@
         "step": "0.1",
         "min": "5",
         "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": "10.2",
+        "key": "optionHomeSidebar",
+        "label": "Front page Sidebar:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
       }
     ]
   }
