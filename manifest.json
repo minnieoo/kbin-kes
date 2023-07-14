@@ -551,6 +551,7 @@
         "initial": "10.2",
         "key": "optionHeader",
         "label": "Header",
+        "step": "0.1"
       }
     ]
   }
