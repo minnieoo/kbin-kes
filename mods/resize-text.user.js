@@ -25,7 +25,6 @@ resizeText() {
 
 
   // === HEADER === //
-  function headerResize() {
       // main header elems
       const topHeader = document.querySelectorAll('#header.header'); // selects elem w id header and class header
       const threadMenu = document.querySelectorAll('menu.options__main'); // 
@@ -37,7 +36,7 @@ resizeText() {
       topHeaderElems.forEach(headerElem => {
           headerElem.style.fontSize = `${headerFontSize}pt`;       
       });
-  } //end headerResize()
+  //end headerResize()
 
   
 
