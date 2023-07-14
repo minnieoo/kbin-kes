@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.0.5
+// @version      0.0.6
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -100,6 +100,8 @@ function resizeText() {
     // homepage sidebar *variables*
     const homepageSidebarMain = document.querySelectorAll('aside#sidebar section.related-magazines');
     const homeActiveUsers = document.querySelectorAll('aside#sidebar section.active-users');
+    const homepageSidebarPosts = document.querySelectorAll('aside#sidebar section.posts');
+    const homeEntries = document.querySelectorAll('aside#sidebar section.entries');
 
     // homepage sidebar loops
     homepageSidebarMain.forEach(homepageSidebarElem => {
@@ -113,6 +115,22 @@ function resizeText() {
     homeActiveUsers.forEach(activeUserElem => {
         const activeUser = activeUserElem.querySelectorAll('h3');
         activeUser.style.fontSize = fontSizes.optionHomeSidebar;
+    })
+
+    homepageSidebarPosts.forEach(sidebarPostsElem => {
+        const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
+
+        sidebarPosts.forEach(sidebarPost => {
+            sidebarPost.style.fontSize = fontSizes.optionHomeSidebar;
+        });
+    });
+
+    homeEntries.forEach(homeEntryElem => {
+        const homeEntry = homeEntryElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
+
+        homeEntry.forEach(homeEntryText => {
+            homeEntryText.style.fontSize = fontSizes.optionHomeSidebar;
+        })
     })
 
 
