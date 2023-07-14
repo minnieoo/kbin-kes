@@ -574,7 +574,7 @@
     "label": "Change font size",
     "login": false,
     "recurs": true,
-    "desc": "Customize the font size site-wide.",
+    "desc": "Customize the font size site-wide. Note: reload after toggling off.",
     "entrypoint": "textResize",
     "namespace": "resize",
     "page": "general",
