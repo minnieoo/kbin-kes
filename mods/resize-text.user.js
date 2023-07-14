@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.0.3
+// @version      0.0.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -80,7 +80,7 @@ function resizeText() {
     // mag sidebar *variables*
     const magSidebar = document.querySelectorAll('aside#sidebar section.magazine.section');
     const magName = document.querySelectorAll('aside#sidebar section.magazine.section a');
-    const modSidebar = document.querySelectorAll('section.user-list, section h3');
+    const modSidebar = document.querySelectorAll('section.user-list, section.user-list h3');
     // mag side bar *loops*
     magSidebar.forEach(sidebar => {
         sidebar.style.fontSize = fontSizes.magSidebar;
