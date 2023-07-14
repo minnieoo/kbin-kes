@@ -106,13 +106,13 @@ function resizeText() {
             const homeRelatedMags = homepageSidebarElem.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
 
             homeRelatedMags.forEach(relatedMagElem => {
-                relatedMagElem.style.fontSize = optionHomeSidebar;
+                relatedMagElem.style.fontSize = fontSizes.optionHomeSidebar;
             });
     })
 
     homeActiveUsers.forEach(activeUserElem => {
         const activeUser = activeUserElem.querySelectorAll('h3');
-        activeUser.style.fontSize = optionHomeSidebar;
+        activeUser.style.fontSize = fontSizes.optionHomeSidebar;
     })
 
 
