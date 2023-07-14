@@ -14,10 +14,22 @@
 // ==/UserScript==
 
 
+resizeText() {
+    
+
+
   
+}
+
   
+  function addStep() {
+    const headerStep = document.querySelector('input[kes-key="optionHeader"]');
+    headerStep.setAttribute('steps', '.1');
+  }
+
   function textResize(toggle) {
       if (toggle) {
+          addStep();
           resizeText();
       } else {
       }
