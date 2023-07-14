@@ -583,7 +583,7 @@
         "type": "number",
         "initial": "10.2",
         "key": "optionHeader",
-        "label": "Header",
+        "label": "Header:",
         "step": "0.1",
         "min": "5",
         "max": "50"
@@ -591,7 +591,8 @@
       {
         "type": "number",
         "initial": "10.2",
-        "label": "optionPosts",
+        "key": "optionPosts",
+        "label": "Posts:",
         "step": "0.1",
         "min": "5",
         "max": "50"
