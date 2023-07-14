@@ -15,12 +15,12 @@
 
 
 function resizeText() {
-
+    const settings = getModSettings('resize');
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
-        content: `${settings["optionHeader"]}px`,
-        sidebar: `${settings["optionHeader"]}px`
+        content: `${settings["optionContent"]}px`,
+        magSidebar: `${settings["optionMagSidebar"]}px`
       };
 
 
