@@ -49,6 +49,32 @@ function resizeText() {
 
     }) 
 
+// === POSTS === //
+    // post *variables*
+    const content = document.querySelectorAll('article.entry');
+
+    // post *loops*
+    contentHeader.forEach(header => {
+        const textContentElements = header.querySelectorAll('h1, h3, p, a, time, button:not([data-action="subject#vote"])');
+        const textContentH2 = header.querySelectorAll('span.entry__domain, h2 a');
+        const voteText = header.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
+
+        textContentElements.forEach(textElem => {
+            textElem.style.fontSize = fontSizes.posts;
+        });
+
+        textContentH2.forEach(textH2 => {
+            const postSizeNum = settings["optionPosts"];
+            textH2.style.fontSize = `${postSizeNum * 1.2}pt`;
+        });
+
+        voteText.forEach(textVote => {
+           // let textVoteSize = `${contentSizeNum * 1.05}pt`;
+            textVote.style.fontSize = fontSizes.posts;
+        });
+
+    });
+
 
 
 
