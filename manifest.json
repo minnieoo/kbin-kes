@@ -535,40 +535,25 @@
     "page": "navbar"
   },
   {
-    "name": "Change font size",
+    "name": "Customize font size",
     "author": "minnieo",
     "version": "0.1.0",
     "label": "Change font size",
     "login": false,
     "recurs": true,
-    "desc": "Change the font size of comments and posts. Note: some changes require reload to update.",
+    "desc": "Customize font size site-wide.",
     "entrypoint": "textResize",
     "namespace": "resize",
-    "page": "threads",
+    "page": "general",
     "fields": [
         {
-        "type": "select",
-        "initial": "Only comments",
-        "key": "option",
-        "label": "Apply to:",
+        "type": "number",
+        "initial": "10.6",
+        "key": "optionHeader",
+        "label": "Header",
         "values": [
-          "Only comments",
-          "Only posts",
-          "Comments and posts"
+          "10.2"
         ]
-      },
-      {
-          "type": "radio",
-          "initial": "Normal",
-          "key": "size",
-          "label": "Choose a size:",
-          "values": [
-            "Small",
-            "Normal",
-            "Large",
-            "Extra Large",
-            "Extra Extra Large"
-          ]
       }
     ]
   }
