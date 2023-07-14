@@ -84,15 +84,15 @@ function resizeText() {
 
     // mag side bar *loops*
     magSidebar.forEach(sidebar => {
-        sidebar.style.fontSize = 
+        sidebar.style.fontSize = fontSizes.magSidebar;
     })
 
     magName.forEach(mag => {
-        mag.style.fontSize = '';
+        mag.style.fontSize = fontSizes.magSidebar;
     })
 
     modSidebar.forEach(mods => {
-        mods.style.fontSize = '';
+        mods.style.fontSize = fontSizes.magSidebar;
     })
 
 
