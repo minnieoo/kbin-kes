@@ -548,12 +548,9 @@
     "fields": [
         {
         "type": "number",
-        "initial": "10.6",
+        "initial": "10.2",
         "key": "optionHeader",
         "label": "Header",
-        "values": [
-          "10.2"
-        ]
       }
     ]
   }
