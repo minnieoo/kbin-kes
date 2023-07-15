@@ -588,10 +588,10 @@
 
       },
       {
-        "type": "checkbox",
+        "type": "button",
         "checkbox_label": "Reset defaults",
         "initial": false,
-        "key": "defaultCheckbox",
+        "key": "defaultButton",
         "label": "Reset values to defaults:"
       },
       {
