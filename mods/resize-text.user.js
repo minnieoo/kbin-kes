@@ -145,8 +145,8 @@ function resizeText() {
     profileBox.forEach(profileElem => {
         const profileBoxElem = profileElem.querySelectorAll('h1, p, small');
 
-       profileBoxElem.forEach(profileElem => {
-           profileElem.style.fontSize = fontSizes.optionProfile;
+       profileBoxElem.forEach(resizeProfileElem => {
+        resizeProfileElem.style.fontSize = fontSizes.header;
        })
 
     })
@@ -154,8 +154,8 @@ function resizeText() {
     profileInfo.forEach(profileInfoElem => {
         const profileInfoElement = profileInfoElem.querySelectorAll('h3, ul, li, a, p');
 
-        profileInfoElement.forEach(profileElemInfo => {
-            profileElemInfo.style.fontSize = fontSizes.optionProfile;
+        profileInfoElement.forEach(resizeProfileInfoElems => {
+            resizeProfileInfoElems.style.fontSize = fontSizes.header;
         })
     })
 
