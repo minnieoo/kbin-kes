@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.1.6
+// @version      0.1.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -179,6 +179,8 @@ function resizeText() {
       if (transCheckbox.checked) {
         kesModal.style.backgroundColor = '#2c2c2c00 !important';
         console.log("Transparency on");
+        console.log("Transparency CHECK");
+
       } else {
         console.log("Transparency off");
       }
