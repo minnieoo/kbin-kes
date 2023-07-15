@@ -124,7 +124,7 @@ function resizeText() {
         const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         sidebarPosts.forEach(sidebarPost => {
-            sidebarPost.style.fontSize = fontSizes.profile;
+            sidebarPost.style.fontSize = fontSizes.homeSidebar;
         });
     });
 
@@ -132,7 +132,7 @@ function resizeText() {
         const homeEntry = homeEntryElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         homeEntry.forEach(homeEntryText => {
-            homeEntryText.style.fontSize = fontSizes.profile;
+            homeEntryText.style.fontSize = fontSizes.homeSidebar;
         })
     })
 
@@ -148,7 +148,7 @@ function resizeText() {
         const profileBoxElem = profileElem.querySelectorAll('h1, p, small');
 
        profileBoxElem.forEach(resizeProfileElem => {
-        resizeProfileElem.style.fontSize = fontSizes.header;
+        resizeProfileElem.style.fontSize = fontSizes.profile;
        })
 
     })
@@ -157,7 +157,7 @@ function resizeText() {
         const profileInfoElement = profileInfoElem.querySelectorAll('h3, ul, li, a, p');
 
         profileInfoElement.forEach(resizeProfileInfoElems => {
-            resizeProfileInfoElems.style.fontSize = fontSizes.header;
+            resizeProfileInfoElems.style.fontSize = fontSizes.profile;
         })
     })
 
