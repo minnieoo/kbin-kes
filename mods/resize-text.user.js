@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.0.6
+// @version      0.0.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -21,7 +21,8 @@ function resizeText() {
         header: `${settings["optionHeader"]}px`,
         posts: `${settings["optionPosts"]}px`,
         magSidebar: `${settings["optionMagSidebar"]}px`,
-        homeSidebar: `${settings["optionHomeSidebar"]}px`
+        homeSidebar: `${settings["optionHomeSidebar"]}px`,
+        profile: `${settings["optionProfile"]}px`
       };
 
 
@@ -130,6 +131,31 @@ function resizeText() {
 
         homeEntry.forEach(homeEntryText => {
             homeEntryText.style.fontSize = fontSizes.optionHomeSidebar;
+        })
+    })
+
+
+// === PROFILE === //
+
+    // profile *variables*
+    const profileBox = document.querySelectorAll('div.user-box');
+    const profileInfo = document.querySelectorAll('aside#sidebar section.user-info');
+
+    // profile *loops*
+    profileBox.forEach(profileElem => {
+        const profileBoxElem = profileElem.querySelectorAll('h1, p, small');
+
+       profileBoxElem.forEach(profileElem => {
+           profileElem.style.fontSize = fontSizes.optionProfile;
+       })
+
+    })
+
+    profileInfo.forEach(profileInfoElem => {
+        const profileInfoElement = profileInfoElem.querySelectorAll('h3, ul, li, a, p');
+
+        profileInfoElement.forEach(profileElemInfo => {
+            profileElemInfo.style.fontSize = fontSizes.optionProfile;
         })
     })
 
