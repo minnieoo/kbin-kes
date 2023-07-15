@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.7
+// @version      0.3.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -245,7 +245,7 @@ function resizeText() {
     }
 
 // === RESET TO DEFAULTS FUNCTIONALITY === //
-const defaultButton = document.querySelector('input[type="button"]');
+const defaultButton = document.querySelector('input[kes-key="defaultButton"]');
 const buttonColor = defaultButton.style.backgroundColor;
 function buttonStyle(button) { 
     button.style.backgroundColor = buttonColor; 
