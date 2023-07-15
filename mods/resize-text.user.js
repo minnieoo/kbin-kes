@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.3
+// @version      0.3.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -249,9 +249,9 @@ function resizeText() {
         const defaultButton = document.querySelector('label input[kes-key="defaultButton"]');
 
         eventListenerDefaultButton = (e) => {
-            if (e.target === defaultButton) {
+            if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
                 console.log('Default button clicked');
-                
+
             }
 
 
