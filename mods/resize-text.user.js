@@ -214,7 +214,7 @@ function resizeText() {
 
 
 
-
+// === TRANSPARENCY CHECKBOX FUNCTIONALITY === //
     if (!eventListenerCheckbox) {
         eventListenerCheckbox = (e) => {
             const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
@@ -243,10 +243,12 @@ function resizeText() {
         
         document.addEventListener('click', eventListenerCheckbox);
 }
-    
-    eventListenerDefaultButton = (e) => {
-        const defaultButton = document.querySelector('label input[kes-key="defaultButton');
 
+// === RESET TO DEFAULTS FUNCTIONALITY === //
+
+    const defaultButton = document.querySelector('label input[kes-key="defaultButton');
+
+    eventListenerDefaultButton = (e) => {
         if (e.target === defaultButton) {
             console.log('Default button clicked');
           
@@ -258,7 +260,7 @@ function resizeText() {
     defaultButton.addEventListener('click', eventListenerDefaultButton);
 
 
-} // end of resizeText()
+} // end of resizeText() function //
 
 
 function textResize(toggle) {
