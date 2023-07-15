@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.5.1
+// @version      0.5.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -261,17 +261,17 @@ function resizeText() {
                     const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
                     
                     numSelectMain.forEach(numSelectElem => {
-                        numSelectElem.value = '12';
+                        numSelectElem.setAttribute("value", "12");
                     })
 
-                    Object.keys(fontSizes).forEach(key => {
-                        const defaultValue = settings["initial"];
-                        console.log(key + ': ' + fontSizes[key])
-                        fontSizes[key] = `${defaultValue}px`;
-                        console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
-                        console.log(`INITIAL VALUE: ${defaultValue}`);
+                    // Object.keys(fontSizes).forEach(key => {
+                    //     const defaultValue = settings["initial"];
+                    //     console.log(key + ': ' + fontSizes[key])
+                    //     fontSizes[key] = `${defaultValue}px`;
+                    //     console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
+                    //     console.log(`INITIAL VALUE: ${defaultValue}`);
 
-                    })
+                    // })
 
                 }
 
