@@ -115,7 +115,9 @@ function resizeText() {
 
     homeActiveUsers.forEach(activeUserElem => {
         const activeUser = activeUserElem.querySelectorAll('h3');
-        activeUser.style.fontSize = fontSizes.optionHomeSidebar;
+        activeUser.forEach(resizeActiveUser => {
+            resizeActiveUser.style.fontSize = fontSizes.optionHomeSidebar;
+        })
     })
 
     homepageSidebarPosts.forEach(sidebarPostsElem => {
