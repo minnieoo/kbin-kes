@@ -584,7 +584,7 @@
         "checkbox_label": "Toggle transparency",
         "initial": false,
         "key": "transCheckbox",
-        "label": "test"
+        "label": "Make modal see-through:"
 
       },
       {
