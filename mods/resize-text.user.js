@@ -124,7 +124,7 @@ function resizeText() {
         const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         sidebarPosts.forEach(sidebarPost => {
-            sidebarPost.style.fontSize = fontSizes.fontSizes.optionProfile;
+            sidebarPost.style.fontSize = fontSizes.optionProfile;
         });
     });
 
