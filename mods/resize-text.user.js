@@ -109,14 +109,14 @@ function resizeText() {
             const homeRelatedMags = homepageSidebarElem.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
 
             homeRelatedMags.forEach(relatedMagElem => {
-                relatedMagElem.style.fontSize = fontSizes.optionHomeSidebar;
+                relatedMagElem.style.fontSize = fontSizes.homeSidebar;
             });
     })
 
     homeActiveUsers.forEach(activeUserElem => {
         const activeUser = activeUserElem.querySelectorAll('h3');
         activeUser.forEach(resizeActiveUser => {
-            resizeActiveUser.style.fontSize = fontSizes.optionHomeSidebar;
+            resizeActiveUser.style.fontSize = fontSizes.homeSidebar;
         })
     })
 
@@ -124,7 +124,7 @@ function resizeText() {
         const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         sidebarPosts.forEach(sidebarPost => {
-            sidebarPost.style.fontSize = fontSizes.optionProfile;
+            sidebarPost.style.fontSize = fontSizes.profile;
         });
     });
 
@@ -132,7 +132,7 @@ function resizeText() {
         const homeEntry = homeEntryElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         homeEntry.forEach(homeEntryText => {
-            homeEntryText.style.fontSize = fontSizes.optionProfile;
+            homeEntryText.style.fontSize = fontSizes.profile;
         })
     })
 
