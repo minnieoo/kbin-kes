@@ -626,6 +626,15 @@
       {
         "type": "number",
         "initial": "16",
+        "key": "optionCreate",
+        "label": "Create (threads, mags, links, etc):",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": "16",
         "key": "optionProfile",
         "label": "Profiles:",
         "step": "0.1",
