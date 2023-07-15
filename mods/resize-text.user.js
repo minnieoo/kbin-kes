@@ -124,7 +124,7 @@ function resizeText() {
         const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         sidebarPosts.forEach(sidebarPost => {
-            sidebarPost.style.fontSize = fontSizes.optionHomeSidebar;
+            sidebarPost.style.fontSize = fontSizes.fontSizes.optionProfile;
         });
     });
 
@@ -132,7 +132,7 @@ function resizeText() {
         const homeEntry = homeEntryElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         homeEntry.forEach(homeEntryText => {
-            homeEntryText.style.fontSize = fontSizes.optionHomeSidebar;
+            homeEntryText.style.fontSize = fontSizes.optionProfile;
         })
     })
 
