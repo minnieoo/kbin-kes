@@ -258,24 +258,18 @@ function resizeText() {
                     defaultButton.style.backgroundColor = '#079D0C'
                     setTimeout(() => buttonStyle(defaultButton), 500);
 
-                    const applyFontSizes = () => {
-                        Object.keys(fontSizes).forEach(key => {
-                          const elements = document.querySelectorAll(`input[kes-key="${key}"]`);
-                          elements.forEach(element => {
-                            element.style.fontSize = fontSizes[key];
-                          });
-                        });
-                      };
-                      
-                      const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
-                      
-                      numSelectMain.forEach(numSelectElem => {
-                        const key = numSelectElem.getAttribute('kes-key');
+                    const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
+                    
+                    numSelectMain.forEach(numSelectElem => {
+                        numSelectElem.setAttribute("value", "12");
+                    })
+
+                    Object.keys(fontSizes).forEach(key => {
+                        console.log(key + ': ' + fontSizes[key])
                         fontSizes[key] = '12px';
-                      });
-                      
-                      // Apply the updated font sizes to the elements in the DOM
-                      applyFontSizes();
+                        console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
+
+                    })
 
                 }
 
