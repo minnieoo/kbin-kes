@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.2
+// @version      0.3.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -246,7 +246,7 @@ function resizeText() {
 
 // === RESET TO DEFAULTS FUNCTIONALITY === //
     if (!eventListenerDefaultButton) {
-        const defaultButton = document.querySelector('label input[kes-key="defaultButton]');
+        const defaultButton = document.querySelector('label input[kes-key="defaultButton"]');
 
         eventListenerDefaultButton = (e) => {
             if (e.target === defaultButton) {
