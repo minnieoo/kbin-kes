@@ -588,6 +588,13 @@
 
       },
       {
+        "type": "checkbox",
+        "checkbox_label": "Reset defaults",
+        "initial": false,
+        "key": "defaultCheckbox",
+        "label": "Reset values to defaults:"
+      },
+      {
         "type": "number",
         "initial": "16",
         "key": "optionHeader",
