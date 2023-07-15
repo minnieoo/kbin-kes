@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.1.1
+// @version      0.1.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
