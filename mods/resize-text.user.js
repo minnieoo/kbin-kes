@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.4
+// @version      0.3.9
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -245,20 +245,26 @@ function resizeText() {
     }
 
 // === RESET TO DEFAULTS FUNCTIONALITY === //
-    if (!eventListenerDefaultButton) {
-        const defaultButton = document.querySelector('label input[kes-key="defaultButton"]');
+        if (!eventListenerDefaultButton) {
+            eventListenerDefaultButton = (e) => {
+                const defaultButton = document.querySelector('input[kes-key="defaultButton"]');
+                const buttonColor = defaultButton.style.backgroundColor;
+                function buttonStyle(button) { 
+                    button.style.backgroundColor = buttonColor; 
+                }
+            
+                if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
+                    console.log('Reset defaults button clicked');
+                    defaultButton.style.backgroundColor = '#079D0C'
+                    setTimeout(() => buttonStyle(defaultButton), 500);
 
-        eventListenerDefaultButton = (e) => {
-            if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
-                console.log('Default button clicked');
+                }
+
 
             }
 
-
+            document.addEventListener('click', eventListenerDefaultButton); 
         }
-
-        document.addEventListener('click', eventListenerDefaultButton); 
-    }
 
 
 } // end of resizeText() function //
