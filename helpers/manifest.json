@@ -590,7 +590,7 @@
       }, 
       {
         "type": "number",
-        "initial": "16",
+        "initial": "12",
         "key": "optionPosts",
         "label": "Posts:",
         "step": "0.1",
