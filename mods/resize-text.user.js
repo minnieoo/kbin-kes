@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.2.3 git
+// @version      0.2.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -13,7 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-let eventListener;
+let eventListenerCheckbox;
 
 function resizeText() {
     const settings = getModSettings('resize');
@@ -173,7 +173,7 @@ function resizeText() {
 
 
 
-    eventListener = (e) => {
+    eventListenerCheckbox = (e) => {
         const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
         const kesModalContent = document.querySelector('div.kes-settings-modal-content');
         const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
@@ -197,7 +197,7 @@ function resizeText() {
     
     }
     
-    document.addEventListener('click', eventListener);
+    document.addEventListener('click', eventListenerCheckbox);
     
 
 
@@ -209,6 +209,6 @@ function textResize(toggle) {
     if (toggle) {
         resizeText();
     } else {
-        document.removeEventListener('input', eventListener);
+        document.removeEventListener('input', eventListenerCheckbox);
     }
 }
