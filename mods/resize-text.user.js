@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.5.2
+// @version      0.5.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -258,20 +258,24 @@ function resizeText() {
                     defaultButton.style.backgroundColor = '#079D0C'
                     setTimeout(() => buttonStyle(defaultButton), 500);
 
-                    const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
-                    
-                    numSelectMain.forEach(numSelectElem => {
-                        numSelectElem.setAttribute("value", "12");
-                    })
-
-                    // Object.keys(fontSizes).forEach(key => {
-                    //     const defaultValue = settings["initial"];
-                    //     console.log(key + ': ' + fontSizes[key])
-                    //     fontSizes[key] = `${defaultValue}px`;
-                    //     console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
-                    //     console.log(`INITIAL VALUE: ${defaultValue}`);
-
-                    // })
+                    const applyFontSizes = () => {
+                        Object.keys(fontSizes).forEach(key => {
+                          const elements = document.querySelectorAll(`input[kes-key="${key}"]`);
+                          elements.forEach(element => {
+                            element.style.fontSize = fontSizes[key];
+                          });
+                        });
+                      };
+                      
+                      const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
+                      
+                      numSelectMain.forEach(numSelectElem => {
+                        const key = numSelectElem.getAttribute('kes-key');
+                        fontSizes[key] = '12px';
+                      });
+                      
+                      // Apply the updated font sizes to the elements in the DOM
+                      applyFontSizes();
 
                 }
 
