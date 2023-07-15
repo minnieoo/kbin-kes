@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.1.5
+// @version      0.1.6
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -172,12 +172,12 @@ function resizeText() {
 
 
 
-    const kesModal = document.querySelector('.kes-settings-modal-content');
+    const kesModal = document.querySelector('div.kes-settings-modal-content');
     const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
     
     transCheckbox.addEventListener('change', function() {
       if (transCheckbox.checked) {
-        kesModal.style.backgroundColor = '#2c2c2c00';
+        kesModal.style.backgroundColor = '#2c2c2c00 !important';
         console.log("Transparency on");
       } else {
         console.log("Transparency off");
