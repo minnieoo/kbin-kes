@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.2.7
+// @version      0.2.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -23,7 +23,8 @@ function resizeText() {
         posts: `${settings["optionPosts"]}px`,
         magSidebar: `${settings["optionMagSidebar"]}px`,
         homeSidebar: `${settings["optionHomeSidebar"]}px`,
-        profile: `${settings["optionProfile"]}px`
+        profile: `${settings["optionProfile"]}px`,
+        posts: `${settings["optionCreate"]}px`
       };
 
 
@@ -162,6 +163,47 @@ function resizeText() {
         })
     })
 
+// === CREATE POSTS === //
+
+    // create posts *variables*
+    const createPost = document.querySelectorAll('form.entry-create');
+    const createMicroBlog = document.querySelectorAll('form.post-add');
+    const createHeader = document.querySelectorAll('aside.options.options--top.options-activity');
+    const createMag = document.querySelectorAll('form[name="magazine"]');
+
+    // create posts *loops*
+    createPost.forEach(createPostElem => {
+        const createPostElement = createPostElem.querySelectorAll('label, markdown-toolbar, ul, li, button, i, textarea[placeholder="Body"], input[placeholder="Select a magazine"], select[id^="entry_"][id$="_lang"], input.image-input');
+
+        createPostElement.forEach(createPostResize => {
+            createPostResize.style.fontSize = fontSizes.posts;
+        })
+    });
+
+    createMicroBlog.forEach(createMicroElem => {
+        const createMicroBlogElement = createMicroElem.querySelectorAll('markdown-toolbar, ul, li, button, i, label, input, input#post_magazine_autocomplete-ts-control, select[id="post_lang"], input.image-input');
+
+        createMicroBlogElement.forEach(microBlogResize => {
+            microBlogResize.style.fontSize = fontSizes.posts;
+        })
+
+    });
+
+    createHeader.forEach(createHeaderElem => {
+        const createHeaderElement = createHeaderElem.querySelectorAll('div.options__title h2, menu li a');
+
+        createHeaderElement.forEach(createHeaderResize => {
+            createHeaderResize.style.fontSize = fontSizes.posts;
+        })
+    });
+
+    createMag.forEach(createMagElem => {
+        const createMagElement = createMagElem.querySelectorAll('label, markdown-toolbar, ul, li, button, i, input[placeholder="/m/"], textarea[placeholder="Description"], textarea[placeholder="Rules"]');
+
+        createMagElement.forEach(createMagResize => {
+            createMagResize.style.fontSize = fontSizes.posts;
+        })
+    });
 
 
 
