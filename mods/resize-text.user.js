@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.2.6
+// @version      0.2.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -172,33 +172,34 @@ function resizeText() {
 
 
 
-
-    eventListenerCheckbox = (e) => {
-        const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
-        const kesModalContent = document.querySelector('div.kes-settings-modal-content');
-        const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
-    
-        if (e.target.type === 'checkbox' && e.target.getAttribute('kes-key') === 'transCheckbox') {
-            console.log('CHECKBOX HAS BEEN CLICKED');
-    
-            if (transCheckbox.checked) {
-                console.log('CHECKBOX HAS BEEN CHECKED');
-                kesModalContent.style.backgroundColor = '#2c2c2c00';
-                kesModalContainer.style.backgroundColor = 'transparent';
-    
-            } else {
-                console.log('CHECKBOX HAS BEEN !!UNCHECKED!!');
-                kesModalContent.style.backgroundColor = '';
-                kesModalContainer.style.backgroundColor = '';
+    if (!eventListenerCheckbox) {
+        eventListenerCheckbox = (e) => {
+            const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
+            const kesModalContent = document.querySelector('div.kes-settings-modal-content');
+            const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
+        
+            if (e.target.type === 'checkbox' && e.target.getAttribute('kes-key') === 'transCheckbox') {
+                console.log('CHECKBOX HAS BEEN CLICKED');
+        
+                if (transCheckbox.checked) {
+                    console.log('CHECKBOX HAS BEEN CHECKED');
+                    kesModalContent.style.backgroundColor = '#2c2c2c00';
+                    kesModalContainer.style.backgroundColor = 'transparent';
+        
+                } else {
+                    console.log('CHECKBOX HAS BEEN !!UNCHECKED!!');
+                    kesModalContent.style.backgroundColor = '';
+                    kesModalContainer.style.backgroundColor = '';
+                }
+        
+                e.stopPropagation();
             }
-    
-            e.stopPropagation();
+        
+        
         }
-    
-    
-    }
-    
-    document.addEventListener('click', eventListenerCheckbox);
+        
+        document.addEventListener('click', eventListenerCheckbox);
+}
     
 
 
@@ -211,5 +212,6 @@ function textResize(toggle) {
         resizeText();
     } else {
         document.removeEventListener('click', eventListenerCheckbox);
+        eventListenerCheckbox = null;
     }
 }
