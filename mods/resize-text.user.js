@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.5.0
+// @version      0.5.1
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -265,10 +265,10 @@ function resizeText() {
                     })
 
                     Object.keys(fontSizes).forEach(key => {
-                        const defaultValue = `${settings["initial"]}px`;
+                        const defaultValue = settings["initial"];
                         console.log(key + ': ' + fontSizes[key])
-                        fontSizes[key] = defaultValue;
-                        console.log(`Updated: ${key}: ${fontSizes[key]}`)
+                        fontSizes[key] = `${defaultValue}px`;
+                        console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
                         console.log(`INITIAL VALUE: ${defaultValue}`);
 
                     })
