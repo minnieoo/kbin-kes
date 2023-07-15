@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.2.1
+// @version      0.2.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -174,34 +174,43 @@ function resizeText() {
 
     const kesModal = document.querySelector('div.kes-settings-modal-content');
     const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
-    
-    const observer = new MutationObserver(function(mutationsList) {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-          // see if modal is added
-          const kesModalContent = document.querySelector('div.kes-settings-modal-content');
-          const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
-    
-          if (kesModalContent && kesModalContainer) {
-            kesModalContent.style.backgroundColor = '#2c2c2c00';
-            kesModalContainer.style.backgroundColor = 'transparent';
-    
-            return;
-          }
-        }
-      }
-    });
+    let observer = null;
     
     transCheckbox.addEventListener('change', function() {
       if (transCheckbox.checked) {
+        observer = new MutationObserver(function(mutationsList) {
+          for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              // see if modal is added
+              const kesModalContent = document.querySelector('div.kes-settings-modal-content');
+              const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
+    
+              if (kesModalContent && kesModalContainer) {
+                kesModalContent.style.backgroundColor = '#2c2c2c00';
+                kesModalContainer.style.backgroundColor = 'transparent';
+    
+                return;
+              }
+            }
+          }
+        });
+    
         observer.observe(document.body, { childList: true, subtree: true });
+    
         console.log("Transparency on");
       } else {
-        kesModal.style.backgroundColor = ''; 
-        kesModalContainer.style.backgroundColor = '';
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+    
+        kesModal.style.backgroundColor = ''; // Revert the background color of kesModal
+        kesModalContainer.style.backgroundColor = ''; // Revert the background color of kesModalContainer
+    
         console.log("Transparency off");
       }
     });
+    
     
 
 
