@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.5.7
+// @version      0.5.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -246,38 +246,44 @@ function resizeText() {
 
 // === RESET TO DEFAULTS FUNCTIONALITY === //
 
-if (!eventListenerDefaultButton) {
-    eventListenerDefaultButton = (e) => {
-      const defaultButton = document.querySelector('input[kes-key="defaultButton"]');
-      const buttonColor = defaultButton.style.backgroundColor;
-      function buttonStyle(button) {
-        button.style.backgroundColor = buttonColor;
-      }
-  
-      if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
-        console.log('Reset defaults button clicked');
-        defaultButton.style.backgroundColor = '#079D0C'
-        setTimeout(() => buttonStyle(defaultButton), 500);
-  
-        const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
-
-        numSelectMain.forEach(numSelectElem => {
-          numSelectElem.setAttribute("value", "12");
-          numSelectElem.value = "12"; 
-          numSelectElem.dispatchEvent(new Event('input')); // update CSS
-        });
-  
-        Object.keys(fontSizes).forEach(key => {
-          console.log(key + ': ' + fontSizes[key])
-          fontSizes[key] = '12px';
-          console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
-        });
-      }
+    if (!eventListenerDefaultButton) {
+        eventListenerDefaultButton = (e) => {
+        const defaultButton = document.querySelector('input[kes-key="defaultButton"]');
+        const buttonColor = defaultButton.style.backgroundColor;
+        function buttonStyle(button) {
+            button.style.backgroundColor = buttonColor;
+        }
+    
+        if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
+            console.log('Reset defaults button clicked');
+            defaultButton.style.backgroundColor = '#079D0C'
+            setTimeout(() => buttonStyle(defaultButton), 500);
+    
+            const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
+    
+            numSelectMain.forEach(numSelectElem => {
+            numSelectElem.setAttribute("value", "12");
+            numSelectElem.value = "12";
+            numSelectElem.dispatchEvent(new Event('input')); // Trigger input event to update CSS
+    
+            // Apply updated font size to the corresponding element
+            const optionKey = numSelectElem.getAttribute('kes-key');
+            const elementToUpdate = document.querySelector(`[kes-key="${optionKey}"]`);
+            if (elementToUpdate) {
+                elementToUpdate.style.fontSize = fontSizes[optionKey];
+            }
+            });
+    
+            Object.keys(fontSizes).forEach(key => {
+            console.log(key + ': ' + fontSizes[key])
+            fontSizes[key] = '12px';
+            console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
+            });
+        }
+        }
+    
+        document.addEventListener('click', eventListenerDefaultButton);
     }
-  
-    document.addEventListener('click', eventListenerDefaultButton);
-  }
-
 
 
 } // end of resizeText() function //
