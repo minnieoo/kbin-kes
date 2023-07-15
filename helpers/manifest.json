@@ -591,6 +591,7 @@
         "type": "button",
         "checkbox_label": "Reset defaults",
         "initial": "reset",
+        "value": "reset",
         "key": "defaultButton",
         "label": "Reset values to defaults:"
       },
