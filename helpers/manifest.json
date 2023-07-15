@@ -579,7 +579,14 @@
     "namespace": "resize",
     "page": "general",
     "fields": [
-        {
+      {
+        "type": "checkbox",
+        "checkbox_label": "Toggle transparency",
+        "initial": false,
+        "key": "transCheckbox",
+
+      },
+      {
         "type": "number",
         "initial": "16",
         "key": "optionHeader",
