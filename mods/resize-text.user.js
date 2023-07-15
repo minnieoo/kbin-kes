@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.9
+// @version      0.4.0
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -257,6 +257,9 @@ function resizeText() {
                     console.log('Reset defaults button clicked');
                     defaultButton.style.backgroundColor = '#079D0C'
                     setTimeout(() => buttonStyle(defaultButton), 500);
+                    Object.keys(fontSizes).forEach(key => {
+                        console.log(key + ': ' + fontSizes[key])
+                    })
 
                 }
 
