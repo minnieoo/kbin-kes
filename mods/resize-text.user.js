@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.3.5
+// @version      0.3.6
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -254,7 +254,7 @@ function resizeText() {
 
         eventListenerDefaultButton = (e) => {
             if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
-                console.log('Default button clicked');
+                console.log('Reset defaults button clicked');
                 defaultButton.style.backgroundColor = '#079D0C'
                 setTimeout(() => buttonStyle(defaultButton), 500);
 
