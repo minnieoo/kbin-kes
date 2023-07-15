@@ -583,7 +583,7 @@
         "type": "checkbox",
         "checkbox_label": "Toggle transparency",
         "initial": false,
-        "key": "transCheckbox",
+        "key": "transCheckbox"
 
       },
       {
