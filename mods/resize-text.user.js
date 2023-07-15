@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.4.4
+// @version      0.4.5
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -272,7 +272,7 @@ function resizeText() {
                         const numSelect = numSelectElem.querySelectorAll('input[kes-key^="option"]')
 
                         numSelect.forEach(selectedNum => {
-                            selectedNum.value = '12px';
+                            selectedNum.value = '12';
                         })
                     })
 
