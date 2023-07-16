@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.6.5
+// @version      0.6.6
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -65,7 +65,8 @@ function resizeText() {
     // post *loops*
     postContent.forEach(postContentElem => {
         const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"])');
-        const textContentH2 = postContentElem.querySelectorAll('span.entry__domain, h2 a, h1 a');
+        const textContentH2 = postContentElem.querySelectorAll('span.entry__domain, h1 a');
+        const textContentH2 = postContentElem.querySelectorAll('span.entry__domain, h2 a');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
 
         textContentElements.forEach(textContentElem => {
@@ -75,6 +76,11 @@ function resizeText() {
         textContentH2.forEach(textContentH2 => {
             const postSizeNum = settings["optionPosts"];
             textContentH2.style.fontSize = `${postSizeNum * 1.05}pt`;
+        });
+
+        textContentH1.forEach(textContentH1 => {
+            const postSizeNumH1 = settings["optionPosts"];
+            textContentH1.style.fontSize = `${postSizeNum * 1.05}pt`;
         });
 
         voteText.forEach(textVote => {
