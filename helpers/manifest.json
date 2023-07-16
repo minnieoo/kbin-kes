@@ -604,7 +604,7 @@
       },
       {
         "type": "number",
-        "initial": "16",
+        "initial": 16,
         "key": "optionHeader",
         "label": "Header:",
         "step": "0.1",
@@ -613,7 +613,7 @@
       }, 
       {
         "type": "number",
-        "initial": "12",
+        "initial": 12,
         "key": "optionPosts",
         "label": "Posts:",
         "step": "0.1",
@@ -622,7 +622,7 @@
       }, 
       {
         "type": "number",
-        "initial": "12",
+        "initial": 12,
         "key": "optionComments",
         "label": "Comments:",
         "step": "0.1",
@@ -631,7 +631,7 @@
       },
       {
         "type": "number",
-        "initial": "16",
+        "initial": 16,
         "key": "optionMagSidebar",
         "label": "Magazine Sidebar:",
         "step": "0.1",
@@ -640,7 +640,7 @@
       },
       {
         "type": "number",
-        "initial": "16",
+        "initial": 16,
         "key": "optionHomeSidebar",
         "label": "Front page Sidebar:",
         "step": "0.1",
@@ -649,7 +649,7 @@
       },
       {
         "type": "number",
-        "initial": "16",
+        "initial": 16,
         "key": "optionCreate",
         "label": "Create (threads, mags, links, etc):",
         "step": "0.1",
@@ -658,7 +658,7 @@
       },
       {
         "type": "number",
-        "initial": "16",
+        "initial": 16,
         "key": "optionProfile",
         "label": "Profiles:",
         "step": "0.1",
