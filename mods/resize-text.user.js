@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.6.2
+// @version      0.6.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -25,7 +25,8 @@ function resizeText() {
         magSidebar: `${settings["optionMagSidebar"]}px`,
         homeSidebar: `${settings["optionHomeSidebar"]}px`,
         profile: `${settings["optionProfile"]}px`,
-        createPosts: `${settings["optionCreate"]}px`
+        createPosts: `${settings["optionCreate"]}px`,
+        comments: `${settings["optionComments"]}px`
       };
 
 
@@ -82,6 +83,22 @@ function resizeText() {
         });
 
     });
+
+
+// === COMMENTS  === //
+
+    // comments *variables*
+    const commentSection = document.querySelectorAll('section.comments.entry-comments.comments-tree');
+
+    //comments *loops*
+    commentSection.forEach(commentElem => {
+        const commentElement = commentElem.querySelectorAll('blockquote header a, header time, div.content p, div.content a, span[data-subject-target$="Counter"], li, a, i.fa-arrow-up, i.fa-arrow-down, h1, h2, h3, h4');
+    
+        commentElement.forEach(commentResize => {
+            commentResize.style.fontSize = fontSizes.comments;
+        })
+    })
+
 
 // === MAG SIDEBAR === //
 
