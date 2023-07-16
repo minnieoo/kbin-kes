@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.6.6
+// @version      0.6.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -42,8 +42,8 @@ function resizeText() {
         const topHeaderElems = headerElem.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
         
         topHeaderElems.forEach(resizeHeaderElems => {
-            resizeHeaderElems.style.fontSize = fontSizes.header;
-            
+            resizeHeaderElems.style.setProperty('font-size', fontSizes.header);
+
             if (avatar) {
                 const avatarWidth = avatar.offsetWidth;
                 const avatarHeight = avatar.offsetHeight;
@@ -70,22 +70,22 @@ function resizeText() {
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
 
         textContentElements.forEach(textContentElem => {
-            textContentElem.style.fontSize = fontSizes.posts;
+            textContentElem.style.setProperty('font-size', fontSizes.posts);
         });
 
         textContentH2.forEach(textContentH2 => {
             const postSizeNum = settings["optionPosts"];
-            textContentH2.style.fontSize = `${postSizeNum * 1.05}pt`;
+            textContentH2.style.setProperty('font-size', `${postSizeNum * 1.05}pt`);
         });
 
         textContentH1.forEach(textContentH1 => {
             const postSizeNumH1 = settings["optionPosts"];
-            textContentH1.style.fontSize = `${postSizeNum * 1.05}pt`;
+            textContentH1.style.setProperty('font-size', `${postSizeNum * 1.05}pt`);
         });
 
         voteText.forEach(textVote => {
            // let textVoteSize = `${contentSizeNum * 1.05}pt`;
-            textVote.style.fontSize = fontSizes.posts;
+            textVote.style.setProperty('font-size', fontSizes.posts);
         });
 
     });
@@ -101,7 +101,7 @@ function resizeText() {
         const commentElement = commentElem.querySelectorAll('blockquote header a, header time, div.content p, div.content a, span[data-subject-target$="Counter"], li, a, i.fa-arrow-up, i.fa-arrow-down, h1, h2, h3, h4');
     
         commentElement.forEach(commentResize => {
-            commentResize.style.fontSize = fontSizes.comments;
+            commentResize.style.setProperty('font-size', fontSizes.comments);
         })
     })
 
@@ -115,19 +115,19 @@ function resizeText() {
     const modSidebar = document.querySelectorAll('section.user-list, section.user-list h3');
     // mag side bar *loops*
     magSidebar.forEach(sidebar => {
-        sidebar.style.fontSize = fontSizes.magSidebar;
+        sidebar.style.setProperty('font-size', fontSizes.magSidebar);
     })
 
     magName.forEach(mag => {
-        mag.style.fontSize = fontSizes.magSidebar;
+        mag.style.setProperty('font-size', fontSizes.magSidebar);
     })
 
     modSidebar.forEach(mods => {
-        mods.style.fontSize = fontSizes.magSidebar;
+        mods.style.setProperty('font-size', fontSizes.magSidebar);
     })
 
     magSidebarName.forEach(magname => {
-        magname.style.fontSize = fontSizes.magSidebar;
+        magname.style.setProperty('font-size', fontSizes.magSidebar);
     })
 
 
@@ -145,14 +145,14 @@ function resizeText() {
             const homeRelatedMags = homepageSidebarElem.querySelectorAll('a img, h1, h2, h3, p, li, span, a:not(.icon), i');
 
             homeRelatedMags.forEach(relatedMagElem => {
-                relatedMagElem.style.fontSize = fontSizes.homeSidebar;
+                relatedMagElem.style.setProperty('font-size', fontSizes.homeSidebar);
             });
     })
 
     homeActiveUsers.forEach(activeUserElem => {
         const activeUser = activeUserElem.querySelectorAll('h3');
         activeUser.forEach(resizeActiveUser => {
-            resizeActiveUser.style.fontSize = fontSizes.homeSidebar;
+            resizeActiveUser.style.setProperty('font-size', fontSizes.homeSidebar);
         })
     })
 
@@ -160,7 +160,7 @@ function resizeText() {
         const sidebarPosts = sidebarPostsElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         sidebarPosts.forEach(sidebarPost => {
-            sidebarPost.style.fontSize = fontSizes.homeSidebar;
+            sidebarPost.style.setProperty('font-size', fontSizes.homeSidebar);
         });
     });
 
@@ -168,7 +168,7 @@ function resizeText() {
         const homeEntry = homeEntryElem.querySelectorAll('h3, div.container blockquote.content p, div.container time, div.container a');
 
         homeEntry.forEach(homeEntryText => {
-            homeEntryText.style.fontSize = fontSizes.homeSidebar;
+            homeEntryText.style.setProperty('font-size', fontSizes.homeSidebar);
         })
     })
 
@@ -184,7 +184,7 @@ function resizeText() {
         const profileBoxElem = profileElem.querySelectorAll('h1, p, small');
 
        profileBoxElem.forEach(resizeProfileElem => {
-        resizeProfileElem.style.fontSize = fontSizes.profile;
+        resizeProfileElem.style.setProperty('font-size', fontSizes.profile);
        })
 
     })
@@ -193,7 +193,7 @@ function resizeText() {
         const profileInfoElement = profileInfoElem.querySelectorAll('h3, ul, li, a, p');
 
         profileInfoElement.forEach(resizeProfileInfoElems => {
-            resizeProfileInfoElems.style.fontSize = fontSizes.profile;
+            resizeProfileInfoElems.style.setProperty('font-size', fontSizes.profile);
         })
     })
 
@@ -210,7 +210,7 @@ function resizeText() {
         const createPostElement = createPostElem.querySelectorAll('label, markdown-toolbar, ul, li, button, i, textarea[placeholder="Body"], input[placeholder="Select a magazine"], select[id^="entry_"][id$="_lang"], input.image-input');
 
         createPostElement.forEach(createPostResize => {
-            createPostResize.style.fontSize = fontSizes.createPosts;
+            createPostResize.style.setProperty('font-sizes', fontSizes.createPosts);
         })
     });
 
@@ -218,7 +218,7 @@ function resizeText() {
         const createMicroBlogElement = createMicroElem.querySelectorAll('markdown-toolbar, ul, li, button, i, label, input, input#post_magazine_autocomplete-ts-control, select[id="post_lang"], input.image-input');
 
         createMicroBlogElement.forEach(microBlogResize => {
-            microBlogResize.style.fontSize = fontSizes.createPosts;
+            microBlogResize.style.setProperty('font-sizes', fontSizes.createPosts);
         })
 
     });
@@ -227,7 +227,7 @@ function resizeText() {
         const createHeaderElement = createHeaderElem.querySelectorAll('div.options__title h2, menu li a');
 
         createHeaderElement.forEach(createHeaderResize => {
-            createHeaderResize.style.fontSize = fontSizes.createPosts;
+            createHeaderResize.style.setProperty('font-size', fontSizes.createPosts);
         })
     });
 
@@ -235,7 +235,7 @@ function resizeText() {
         const createMagElement = createMagElem.querySelectorAll('label, markdown-toolbar, ul, li, button, i, input[placeholder="/m/"], textarea[placeholder="Description"], textarea[placeholder="Rules"]');
 
         createMagElement.forEach(createMagResize => {
-            createMagResize.style.fontSize = fontSizes.createPosts;
+            createMagResize.style.setProperty('font-size', fontSizes.createPosts);
         })
     });
 
@@ -277,46 +277,46 @@ function resizeText() {
         document.addEventListener('click', eventListenerCheckbox);
     }
 
-// === RESET TO DEFAULTS FUNCTIONALITY === //
+// // === RESET TO DEFAULTS FUNCTIONALITY === //
 
-if (!eventListenerDefaultButton) {
-    eventListenerDefaultButton = (e) => {
-      const defaultButton = document.querySelector('input[kes-key="defaultButton"]'); //button
-      const buttonColor = defaultButton.style.backgroundColor;
-      function buttonStyle(button) {
-        button.style.backgroundColor = buttonColor;
-      }
+// if (!eventListenerDefaultButton) {
+//     eventListenerDefaultButton = (e) => {
+//       const defaultButton = document.querySelector('input[kes-key="defaultButton"]'); //button
+//       const buttonColor = defaultButton.style.backgroundColor;
+//       function buttonStyle(button) {
+//         button.style.backgroundColor = buttonColor;
+//       }
   
-      if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
-        console.log('Reset defaults button clicked');
-        defaultButton.style.backgroundColor = '#079D0C'
-        setTimeout(() => buttonStyle(defaultButton), 500);
+//       if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
+//         console.log('Reset defaults button clicked');
+//         defaultButton.style.backgroundColor = '#079D0C'
+//         setTimeout(() => buttonStyle(defaultButton), 500);
   
-        const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
+//         const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
   
-        numSelectMain.forEach(numSelectElem => {
-          numSelectElem.setAttribute("value", "12");
-          numSelectElem.value = "12";
-          numSelectElem.dispatchEvent(new Event('input')); // update CSS
+//         numSelectMain.forEach(numSelectElem => {
+//           numSelectElem.setAttribute("value", "12");
+//           numSelectElem.value = "12";
+//           numSelectElem.dispatchEvent(new Event('input')); // update CSS
   
-          // Apply updated font size to the corresponding element
-          const optionKey = numSelectElem.getAttribute('kes-key');
-          const elementToUpdate = document.querySelector(`[kes-key="${optionKey}"]`);
-          if (elementToUpdate) {
-            elementToUpdate.style.fontSize = fontSizes[optionKey];
-          }
-        });
+//           // Apply updated font size to the corresponding element
+//           const optionKey = numSelectElem.getAttribute('kes-key');
+//           const elementToUpdate = document.querySelector(`[kes-key="${optionKey}"]`);
+//           if (elementToUpdate) {
+//             elementToUpdate.style.fontSize = fontSizes[optionKey];
+//           }
+//         });
   
-        Object.keys(fontSizes).forEach(key => {
-          console.log(key + ': ' + fontSizes[key])
-          fontSizes[key] = '12px';
-          console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
-        });
-      }
-    }
+//         Object.keys(fontSizes).forEach(key => {
+//           console.log(key + ': ' + fontSizes[key])
+//           fontSizes[key] = '12px';
+//           console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
+//         });
+//       }
+//     }
   
-    document.addEventListener('click', eventListenerDefaultButton);
-  }
+//     document.addEventListener('click', eventListenerDefaultButton);
+//   }
 
 
 } // end of resizeText() function //
