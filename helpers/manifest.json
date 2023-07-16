@@ -578,6 +578,15 @@
     "entrypoint": "textResize",
     "namespace": "resize",
     "page": "general",
+    "catch_reset": [
+      "optionHeader",
+      "optionPosts",
+      "optionComments",
+      "optionMagSidebar",
+      "optionHomeSidebar",
+      "optionCreate",
+      "optionProfile"
+    ],
     "fields": [
       {
         "type": "checkbox",
@@ -588,12 +597,10 @@
 
       },
       {
-        "type": "button",
-        "checkbox_label": "Reset defaults",
-        "initial": "reset",
-        "value": "reset",
-        "key": "defaultButton",
-        "label": "Reset values to defaults:"
+        "type": "reset",
+        "key": "resetNumFields",
+        "label": "Reset values to defaults:",
+        "value": "reset"
       },
       {
         "type": "number",
