@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.6.3
+// @version      0.6.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -64,7 +64,7 @@ function resizeText() {
 
     // post *loops*
     postContent.forEach(postContentElem => {
-        const textContentElements = postContentElem.querySelectorAll('h1, h3, p, a, time, button:not([data-action="subject#vote"])');
+        const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"])');
         const textContentH2 = postContentElem.querySelectorAll('span.entry__domain, h2 a');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
 
@@ -291,7 +291,7 @@ if (!eventListenerDefaultButton) {
         numSelectMain.forEach(numSelectElem => {
           numSelectElem.setAttribute("value", "12");
           numSelectElem.value = "12";
-          updateState(numSelectElem) // Trigger input event to update CSS
+          numSelectElem.dispatchEvent(new Event('input')); // update CSS
   
           // Apply updated font size to the corresponding element
           const optionKey = numSelectElem.getAttribute('kes-key');
