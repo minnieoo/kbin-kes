@@ -2,7 +2,7 @@
 // @name         KES
 // @namespace    https://github.com/aclist
 // @license      MIT
-// @version      2.0.0-rc.25
+// @version      2.0.0-rc.44
 // @description  Kbin Enhancement Suite
 // @author       aclist
 // @match        https://kbin.social/*
@@ -46,6 +46,7 @@
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/nav-icons.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/numbers.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/report-bug.user.js
+// @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/reset.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/subs.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/timestamp.user.js
 // @resource     kes_layout https://raw.githubusercontent.com/aclist/kbin-kes/testing/helpers/ui.json
@@ -58,17 +59,22 @@
 const version = safeGM("info").script.version;
 const tool = safeGM("info").script.name;
 const repositoryURL = "https://github.com/aclist/kbin-kes/";
-const branch = repositoryURL + "raw/testing/"
-const manifest = branch + "helpers/manifest.json"
-const ui = branch + "ui.json"
-const versionFile = branch + "VERSION";
-const updateURL = branch + "kes.user.js";
+const branch = "testing"
+const helpersPath = "helpers/"
+const branchPath = repositoryURL + "raw/" + branch + "/"
+const versionFile = branchPath + "VERSION";
+const updateURL = branchPath + "kes.user.js";
 const bugURL = repositoryURL + "issues"
+const changelogURL = repositoryURL + "blob/" + branch + "/CHANGELOG.md"
 const magURL = "https://kbin.social/m/enhancement"
-const changelogURL = repositoryURL + "blob/testing/CHANGELOG.md"
+//resource URLs used by legacy GM. API
+const manifest = branchPath + helpersPath + "manifest.json"
+const cssURL = branchPath + helpersPath + "kes.css"
+const layoutURL = branchPath + helpersPath + "ui.json"
 const funcObj = {
     addMail: addMail,
     bugReportInit: bugReportInit,
+    catchResetInit: catchResetInit,
     dropdownEntry: dropdownEntry,
     easyEmoticon: easyEmoticon,
     hideDownvotes: hideDownvotes,
@@ -90,124 +96,93 @@ const funcObj = {
     textResize: textResize
 };
 //END AUTO MASTHEAD
-function fetchManifest() {
-    safeGM("xmlhttpRequest", {
-        method: 'GET',
-        url: manifest,
-        onload: makeArr,
-        headers: {
-            "User-Agent": "Mozilla/5.0",
-            "Accept": "text/xml"
-        },
-    });
-};
-
-
-const versionElement = document.createElement('a');
-versionElement.innerText = tool + ' ' + version;
-versionElement.setAttribute('href', repositoryURL);
-
-let newVersion = null;
-
-function genericXMLRequest(url, callback) {
-	console.log(url)
-	console.log(callback)
-    safeGM("xmlhttpRequest", {
-        method: 'GET',
-        url: url,
-        onload: callback,
-        headers: {
-            "User-Agent": "Mozilla/5.0",
-            "Accept": "text/xml"
-        },
-
-    });
-};
-
-function checkVersion() {
-    safeGM("xmlhttpRequest", {
-        method: 'GET',
-        url: versionFile,
-        onload: checkUpdates,
-        headers: {
-            "User-Agent": "Mozilla/5.0",
-            "Accept": "text/xml"
-        },
-
-    });
-};
-
-async function checkUpdates(response) {
-    newVersion = response.responseText.trim();
+async function checkUpdates (response) {
+    const newVersion = await response.responseText.trim();
 
     if (newVersion && newVersion != version) {
         // Change version link into a button for updating
-
         versionElement.innerText = 'Install update: ' + newVersion;
         versionElement.setAttribute('href', updateURL);
         versionElement.className = 'new';
+        await safeGM("setValue", "isnew", "yes");
+    } else {
+        await safeGM("setValue", "isnew", "no");
     }
 }
 
-async function makeArr(response) {
+async function makeArr (response) {
     const resp = await response.response;
-//    var parser = new DOMParser();
-//    var doc = parser.parseFromString(response.responseText, "text/html");
-//    var content = response.responseText
-    //const jarr = JSON.parse(content)
-    safeGM("setValue", "json", resp);
-};
+    await safeGM("setValue", "json", resp);
+}
 
-async function asyncSafeGM(...args) {
-    const j = await safeGM(...args);
-    return j
-}
-async function setRemoteCSS(response) {
+async function setRemoteCSS (response) {
     const resp = await response.responseText.trim();
-    safeGM("setValue", "kes-css", resp)
+    await safeGM("setValue", "kes-css", resp)
 }
-async function setRemoteUI(response) {
+async function setRemoteUI (response) {
     const resp = await response.response;
-    safeGM("setValue", "layout", resp)
+    await safeGM("setValue", "layout", resp)
+    await safeGM("getValue", "json")
+
 }
-async function prepareArrs() {
+async function preparePayloads () {
     let json
     let css
     let kes_layout
-	console.log(gmPrefix)
+    let isNew
     if (gmPrefix === "GM_") {
         json = safeGM("getResourceText", "kes_json");
         css = safeGM("getResourceText", "kes_css");
         kes_layout = safeGM("getResourceText", "kes_layout");
+        isNew = safeGM("getValue", "isnew")
+        validateData(css, json, kes_layout, isNew)
     } else {
-	genericXMLRequest(manifest,makeArr);
-        json = await asyncSafeGM("getValue", "json");
 
-        let cssURL = "https://github.com/aclist/kbin-kes/raw/testing/kes.css";
-        genericXMLRequest(cssURL, setRemoteCSS);
-        css = await asyncSafeGM("getValue", "kes-css");
-
-        let layoutURL = "https://github.com/aclist/kbin-kes/raw/testing/ui.json";
         genericXMLRequest(layoutURL, setRemoteUI);
-        kes_layout = await asyncSafeGM("getValue", "layout");
+        genericXMLRequest(manifest, makeArr);
+        genericXMLRequest(cssURL, setRemoteCSS);
+
+        unwrapPayloads()
     }
-    initKES(json, css, kes_layout)
 }
-//preparation begins here
-//fetchManifest();
-checkVersion();
-prepareArrs();
+async function unwrapPayloads () {
+    const storedJSON = safeGM("getValue", "json")
+    const storedCSS = safeGM("getValue", "kes-css")
+    const storedUI = safeGM("getValue", "layout")
+    const storedNew = safeGM("getValue", "isnew")
+    let payload = Promise.all([storedCSS, storedJSON, storedUI, storedNew]);
+    payload.then(items => {
+        let p0 = items[0]
+        let p1 = items[1]
+        let p2 = items[2]
+        let p3 = items[3]
+        validateData(p0, p1, p2, p3)
+    });
+}
 
-//business logic here
-function initKES(unparsedJSON, css, unparsedLayout) {
-    //const json = JSON.parse(json)
-    const json = JSON.parse(unparsedJSON);
-    safeGM("addStyle", css);
-    const layoutArr = JSON.parse(unparsedLayout);
-    const sidebarPages = layoutArr.pages;
-    const headerTitle = layoutArr.header.title
+function validateData (rawCSS, rawJSON, rawLayout, isNew) {
+    if (![rawCSS, rawJSON, rawLayout].every(Boolean)) {
+        //if any of the remote resources are missing, block execution of the 
+        //rest of the script and print warning header; style data must be hardcoded here
+        //as an emergency logic
+        const warning = document.createElement('p')
+        warning.style.cssText = "top:0;left:0;position:absolute;z-index: 9999;text-align: center;color: white;" +
+            "font-size: 12px; height: 20px;background-color:#5e0909;width: 100%";
+        warning.innerText = "[kbin Enhancement Suite] Failed to fetch the remote resources. Reload or try again later."
+        document.body.insertAdjacentHTML("beforebegin", warning.outerHTML);
+    } else {
+        safeGM("addStyle", rawCSS);
+        const json = JSON.parse(rawJSON);
+        const layoutArr = JSON.parse(rawLayout);
 
+        constructMenu(json, layoutArr, isNew);
+    }
+}
+
+function constructMenu (json, layoutArr, isNew) {
     //instantiate kes modal and button
+    const sidebarPages = layoutArr.pages;
+    const headerTitle = layoutArr.header.title;
     const kbinContainer = document.querySelector('.kbin-container > menu');
     const kesPanel = document.createElement('li');
     kesPanel.id = 'kes-settings';
@@ -216,13 +191,21 @@ function initKES(unparsedJSON, css, unparsedLayout) {
     settingsButton.id = 'kes-settings-button';
     settingsButton.classList = layoutArr.header.open;
     settingsButton.style.verticalAlign = 'middle';
+    if (isNew === "yes") {
+        const stackSpan = document.createElement('span');
+        stackSpan.classList = 'kes-update';
+        let stackStrong = document.createElement('i');
+        stackStrong.classList = 'fa-solid fa-circle-up fa-sm kes-update-available';
+        stackSpan.appendChild(stackStrong);
+        settingsButton.appendChild(stackSpan);
+    }
     kesPanel.addEventListener('click', () => {
         showSettingsModal();
     });
     kesPanel.appendChild(settingsButton);
 
     var keyPressed = {};
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
 
         let modal = document.querySelector('.kes-settings-modal')
         keyPressed[e.key] = true;
@@ -245,13 +228,45 @@ function initKES(unparsedJSON, css, unparsedLayout) {
 
     }, false);
 
-    document.addEventListener('keyup', function(e) {
+    document.addEventListener('keyup', function (e) {
         keyPressed[e.key + e.location] = false;
 
         keyPressed = {};
     }, false);
 
-    function showSettingsModal() {
+    function cleanNamespaces () {
+        const kesSettings = "kes-settings"
+        for (let i = 0; i < json.length; ++i) {
+            let foundNs = json[i].namespace;
+            if (foundNs) {
+                localStorage.removeItem(foundNs);
+            }
+        }
+        localStorage.removeItem(kesSettings);
+    }
+
+    function resetAll () {
+        const deleteMsg = "This will delete and reset all KES settings to the default and toggle off all options. Really proceed?";
+        const deleteConfirm = confirm(deleteMsg);
+        if (deleteConfirm) {
+            cleanNamespaces();
+            window.location.reload();
+        }
+    }
+    function transparentMode (modal) {
+        console.log(modal)
+        console.log("transparent")
+        modal.remove();
+            const transparentModal = document.createElement("div");
+            transparentModal.className = "kes-transparent-mode-modal";
+            document.body.appendChild(transparentModal);
+        transparentModal.addEventListener('click', ()=> {
+        transparentModal.remove();
+        showSettingsModal();
+    });
+    }
+
+    function showSettingsModal () {
         const settings = getSettings();
 
         const modal = document.createElement("div");
@@ -265,6 +280,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         header.innerHTML = `
             <span class="kes-close"><i class="` + layoutArr.header.close + `"></i></span>
             <span class="kes-dock"><i class="` + layoutArr.header.dock_down + `"></i></span>
+            <span class="kes-transparent-mode"><i class ="` + layoutArr.header.transparent + `"></i></span>
             <span class="kes-changelog"><a href="` + changelogURL + `"><i class="` + layoutArr.header.changelog + `"></i></a></span>
             <span class="kes-version">` + versionElement.outerHTML + `</span>
             `
@@ -281,10 +297,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         sidebar.className = "kes-settings-modal-sidebar";
         let sidebarUl = document.createElement('ul');
 
-
-        //TODO: pages.json
         for (let i = 0; i < sidebarPages.length; ++i) {
-            let page = sidebarPages[i];
             let pageUpper = sidebarPages[i].charAt(0).toUpperCase() + sidebarPages[i].slice(1);
             let sidebarListItem = document.createElement('li');
             sidebarListItem.innerHTML = `
@@ -293,7 +306,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         }
         sidebar.appendChild(sidebarUl);
 
-        function kesFormatAuthorUrl(author) {
+        function kesFormatAuthorUrl (author) {
             if (author.includes('@')) {
                 if (window.location.hostname === author.split('@')[2]) {
                     return 'https://' + window.location.hostname + '/u/' + author.split('@')[1];
@@ -309,7 +322,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
             }
         }
 
-        function openHelpBox(it) {
+        function openHelpBox (it) {
             const settings = getSettings();
             settings.lastPage = it;
             saveSettings(settings);
@@ -329,7 +342,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                         authorA.innerText = modAuthor;
                     }
                     authorP.appendChild(authorA);
-                    if (typeof (json[it].author[json[it].author.indexOf(modAuthor) + 1]) !== 'undefined') {
+                    if (typeof(json[it].author[json[it].author.indexOf(modAuthor) + 1]) !== 'undefined') {
                         authorP.innerHTML += ', ';
                     }
                 });
@@ -386,7 +399,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                 linkSpan.appendChild(linkSpanLabel);
                 const linkA = document.createElement('a');
                 linkA.setAttribute('href', link);
-                if (typeof (linkLabel) !== 'undefined') {
+                if (typeof(linkLabel) !== 'undefined') {
                     linkA.innerText = linkLabel;
                 } else {
                     linkA.innerText = link;
@@ -398,7 +411,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
             const loginReqSpan = document.createElement('span');
             const loginReqSpanLabel = document.createElement('span');
             loginReqSpanLabel.style.fontWeight = 'bold';
-            loginReqSpanLabel.innerText = 'Login Required: ';
+            loginReqSpanLabel.innerText = 'Login required: ';
             loginReqSpan.appendChild(loginReqSpanLabel);
             loginReqSpan.innerHTML += loginHR;
             modInfo.appendChild(loginReqSpan);
@@ -434,9 +447,9 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                     if (!modSettings[key]) {
                         modSettings[key] = initial;
                         saveModSettings(modSettings, ns);
-                    };
+                    }
                     switch (fieldType) {
-                        case "range":
+                        case "range": {
                             const range = document.createElement('input');
                             range.setAttribute("type", fieldType);
                             if (!modSettings[key]) {
@@ -469,9 +482,34 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                             }
                             hBox.appendChild(br);
                             break;
-			case "number":
-				    const numberField = document.createElement('input');
-				    numberField.setAttribute("type", fieldType);
+                        }
+                        case "reset": {
+                            console.log('reset')
+                            const resetField = document.createElement('input');
+                            resetField.setAttribute("type",fieldType);
+                            resetField.addEventListener('click', ()=> {
+                                for (let j = 0; j < json[it].catch_reset.length; ++j) {
+                                    let fieldToReset = json[it].catch_reset[j];
+                                    let resetClassName = `.kes-settings-modal-helpbox input[kes-key="${fieldToReset}"]`
+                                    let found = document.querySelector(resetClassName)
+                                    let matchKey = found.getAttribute("kes-key")
+                                    for (let k = 0 ; k < json[it].fields.length; ++k) {
+                                        if(json[it].fields[k].key === matchKey) {
+                                            let initial = json[it].fields[k].initial
+                                            found.setAttribute("value",initial)
+                                            found.value = initial
+                                        }
+                                    }
+                                    updateState(found);
+                                }
+                            });
+                            hBox.appendChild(resetField)
+                            hBox.appendChild(br)
+                            break;
+                        }
+                        case "number": {
+                            const numberField = document.createElement('input');
+                            numberField.setAttribute("type", fieldType);
                             if (!modSettings[key]) {
                                 numberField.setAttribute("value", initial);
                             } else {
@@ -481,11 +519,18 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                             numberField.setAttribute("kes-key", key);
                             numberField.setAttribute('min', json[it].fields[i].min);
                             numberField.setAttribute('max', json[it].fields[i].max);
-                            numberField.setAttribute('step', json[it].fields[i].step);
-				    hBox.appendChild(numberField);
-				    hBox.appendChild(br);
-				    break;
-                        case "select":
+                            if (json[it].fields[i].step) {
+                                numberField.setAttribute('step', json[it].fields[i].step);
+                            }
+                            numberField.addEventListener('change', (e)=> {
+                                let numTarg = e.target
+                                numTarg.setAttribute("value",numTarg.value)
+                            });
+                            hBox.appendChild(numberField);
+                            hBox.appendChild(br);
+                            break;
+                        }
+                        case "select": {
                             const selectField = document.createElement('select');
                             selectField.setAttribute('name', ns);
                             selectField.setAttribute("kes-iter", it);
@@ -504,7 +549,8 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                             hBox.appendChild(selectField);
                             hBox.appendChild(br);
                             break;
-                        case "radio":
+                        }
+                        case "radio": {
                             const radioDiv = document.createElement('div');
                             for (let j = 0; j < json[it].fields[i].values.length; ++j) {
                                 const radioField = document.createElement('input');
@@ -531,7 +577,8 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                             hBox.appendChild(radioDiv);
                             hBox.appendChild(br);
                             break;
-                        case "checkbox":
+                        }
+                        case "checkbox": {
                             const checkboxLabel = document.createElement('label');
                             const cfield = document.createElement('input');
                             cfield.setAttribute("type", fieldType);
@@ -548,6 +595,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
                             checkboxLabel.appendChild(ctext)
                             hBox.appendChild(checkboxLabel);
                             break;
+                        }
                         default: {
                             const field = document.createElement('input');
                             field.setAttribute("type", fieldType);
@@ -580,29 +628,10 @@ function initKES(unparsedJSON, css, unparsedLayout) {
             } else {
                 check.checked = false;
             }
-            // add to crumbs
-            // let activeChild = document.querySelector('.crumbChild')
-            // if (activeChild) {
-            //  activeChild.remove();
-            // }
-            // let crumbsRoot = document.querySelector('.kes-crumbs h2');
-            // let span = document.createElement('span');
-            // span.className = "crumbChild"
-            // let pad = document.createElement('text');
-            // pad.innerText = ' ';
-            // let chev = document.createElement('i')
-            // chev.className = 'fa-solid fa-chevron-right fa-xs';
-            // let activeMod = document.createElement('text');
-            // activeMod.innerText = ' ' + event.target.innerText;
-            // span.appendChild(pad)
-            // span.appendChild(chev)
-            // span.appendChild(activeMod)
-            // crumbsRoot.appendChild(span)
-
-        };
+        }
 
         // Add script tag with opentab function
-        function openTab(tabName) {
+        function openTab (tabName) {
             const settings = getSettings();
             if (settings.lastTab != tabName) {
                 settings.lastPage = null;
@@ -667,16 +696,45 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         magLink.setAttribute('href', magURL);
         footer.appendChild(magLink)
 
+        const debugClip = document.createElement("i");
+        const clipClass = "kes-debug-clipboard"
+        debugClip.className = clipClass + " " + layoutArr.header.clipboard;
+        footer.appendChild(debugClip)
+        debugClip.addEventListener('click', ()=> {
+            const userPlatform = navigator.platform;
+            const userAgent = navigator.userAgent;
+            const handler = safeGM("info").scriptHandler;
+            const incog = safeGM("info").isIncognito;
+            const kesUserSettings = localStorage["kes-settings"];
+            const toPaste = `OS: ${userPlatform}\nAgent: ${userAgent}\nKES version: ${version}\nHandler: ${handler}\nIncog: ${incog}\nSettings: ${kesUserSettings}`
+                navigator.clipboard.writeText(toPaste);
+                debugClip.className = clipClass + " " + layoutArr.header.check;
+            function revertIcon () {
+                debugClip.className = "kes-debug-clipboard " + layoutArr.header.clipboard
+            }
+            window.setTimeout(revertIcon,600);
+        });
+
         const bugLink = document.createElement("a");
         bugLink.className = "kes-settings-modal-bug-link";
         bugLink.innerText = "Report a bug";
         bugLink.setAttribute('href', bugURL);
         footer.appendChild(bugLink)
 
+
         const bugIcon = document.createElement("span");
         bugIcon.className = "kes-settings-modal-bug-icon";
         bugIcon.innerHTML = '<i class="' + layoutArr.header.bug + '"></i>';
         bugLink.appendChild(bugIcon)
+
+        //reset all localStorage related to KES
+        const resetButton = document.createElement('button')
+        resetButton.innerText = "RESET"
+        resetButton.className = "kes-reset-button"
+        footer.appendChild(resetButton)
+        resetButton.addEventListener('click', () => {
+            resetAll();
+        });
 
         const container = document.createElement("div");
         container.className = "kes-settings-modal-container";
@@ -702,6 +760,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         });
 
 
+
         const dockIcon = document.querySelector('.kes-dock i');
         if (settings.dock == 'down') {
             container.classList.add('kes-docked');
@@ -711,9 +770,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         }
 
 
-        function insertListItem(it) {
-            let type = json[it].type
-            let func = json[it].entrypoint
+        function insertListItem (it) {
             let item = json[it].label
             let page = json[it].page
             const kesListItem = document.createElement("li");
@@ -748,6 +805,9 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         modal.querySelector(".kes-settings-modal .kes-close").addEventListener("click", () => {
             modal.remove();
         });
+        modal.querySelector(".kes-transparent-mode").addEventListener("click", () => {
+            transparentMode(modal);
+        });
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.remove();
@@ -765,7 +825,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         openTab(startPage);
     }
 
-    function updateState(target) {
+    function updateState (target) {
         //get master settings
         const settings = getSettings();
         const it = target.getAttribute('kes-iter');
@@ -806,7 +866,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         }
     }
 
-    function applySettings(entry) {
+    function applySettings (entry) {
         const settings = getSettings();
         try {
             if (settings[entry] == true) {
@@ -819,7 +879,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         }
     }
 
-    window.getModSettings = function(namespace) {
+    window.getModSettings = function (namespace) {
         let settings = localStorage.getItem(namespace)
         if (!settings) {
             settings = {};
@@ -829,7 +889,7 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         return settings;
     }
 
-    function getSettings(func) {
+    function getSettings () {
         let settings = localStorage.getItem("kes-settings");
         if (!settings) {
             settings = {};
@@ -839,24 +899,25 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         return settings;
     }
 
-    function saveModSettings(settings, namespace) {
+    function saveModSettings (settings, namespace) {
         localStorage.setItem(namespace, JSON.stringify(settings));
     }
 
-    function saveSettings(settings) {
+    function saveSettings (settings) {
         localStorage.setItem("kes-settings", JSON.stringify(settings));
     }
 
-    function init() {
+    function init () {
         for (let i = 0; i < json.length; ++i) {
             applySettings(json[i].entrypoint);
         }
     }
 
-    function initmut(list) {
+    function initmut (list) {
         for (const mutation of list) {
             //workaround for timeago ticks changing timestamp textContent
             //reapply verbose timestamp
+            //see also updateState()
             if (mutation.target.className === 'timeago') {
                 if (mutation.target.textContent.indexOf("ago") >= 0) {
                     applySettings("updateTime");
@@ -891,3 +952,10 @@ function initKES(unparsedJSON, css, unparsedLayout) {
         attributes: false
     });
 }
+
+const versionElement = document.createElement('a');
+versionElement.innerText = tool + ' ' + version;
+versionElement.setAttribute('href', repositoryURL);
+let newVersion = null;
+genericXMLRequest(versionFile,checkUpdates);
+preparePayloads();

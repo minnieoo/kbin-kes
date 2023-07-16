@@ -525,14 +525,14 @@
     "page": "debug",
     "namespace": "numbertest",
     "fields": [
-	    {
-	    "type": "number",
-	    "initial": 20,
-	    "key": "number",
-	    "min": 10,
-	    "max": 50,
-	    "step": 10
-	    }
+      {
+        "type": "number",
+        "initial": 20,
+        "key": "number",
+        "min": 10,
+        "max": 50,
+        "step": 10
+      }
     ]
   },
   {
@@ -542,7 +542,7 @@
     "label": "Navbar icons as text",
     "desc": "Change navbar search/post icons to text strings",
     "login": false,
-    "recurs": false,
+    "recurs": true,
     "entrypoint": "navbarIcons",
     "namespace": "nav_icons",
     "fields": [
@@ -659,5 +659,37 @@
         "max": "50" 
       }
     ]
+  },
+  {
+    "name": "Catch Reset Test",
+    "author": "shazbot",
+    "version": "0.1.0",
+    "label": "TEST",
+    "desc": "TEST",
+    "login": false,
+    "recurs": true,
+    "entrypoint": "catchResetInit",
+    "namespace": "catchResetTest",
+    "catch_reset": [
+      "firstNumber",
+      "secondNumber"
+    ],
+    "fields": [
+      {
+        "type": "reset",
+        "key": "resetAllFields"
+      },
+      {
+        "type": "number",
+        "initial": 12,
+        "key": "firstNumber"
+      },
+      {
+        "type": "number",
+        "initial": 12,
+        "key": "secondNumber"
+      }
+    ],
+    "page": "debug"
   }
 ]

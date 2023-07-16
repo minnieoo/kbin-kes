@@ -1,27 +1,18 @@
-// ==UserScript==
-// @name         kbin-timestamp
-// @namespace    https://github.com/aclist
-// @version      0.1
-// @description  More verbose post timestamps
-// @author       aclist
-// @match        https://kbin.social/*
-// @license      MIT
-// ==/UserScript==
 const ns = 'timestamp'
 
-function updateTime(toggle) {
+function updateTime (toggle) {
     let times = document.querySelectorAll('.timeago')
     const settings = getModSettings(ns);
     if (toggle) {
         times.forEach((time) => {
-	    if (time.innerText === "just now") {
-		    console.log("just posted, skipping timestamp")
-		    return
-	    }
-	    if (time.innerText.indexOf("seconds") > -1) {
-		    console.log("timestamp is in seconds, skipping")
-		    return
-	    }
+            if (time.innerText === "just now") {
+                console.log("just posted, skipping timestamp")
+                return
+            }
+            if (time.innerText.indexOf("seconds") > -1) {
+                console.log("timestamp is in seconds, skipping")
+                return
+            }
             let iso = time.getAttribute('datetime');
             let isoYear = (iso.split('T')[0]);
             let isoTime = (iso.split('T')[1]);
@@ -43,6 +34,6 @@ function updateTime(toggle) {
             }
         });
     } else {
-	    return
+        return
     }
 }
