@@ -615,6 +615,15 @@
       }, 
       {
         "type": "number",
+        "initial": "12",
+        "key": "optionComments",
+        "label": "Comments:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
         "initial": "16",
         "key": "optionMagSidebar",
         "label": "Magazine Sidebar:",
