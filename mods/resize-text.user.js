@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.6.9
+// @version      0.7.0
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -80,7 +80,7 @@ function resizeText() {
 
         textContentH1.forEach(textContentH1 => {
             const postSizeNumH1 = settings["optionPosts"];
-            textContentH1.style.setProperty('font-size', `${postSizeNum * 1.05}pt`);
+            textContentH1.style.setProperty('font-size', `${postSizeNumH1 * 1.05}pt`);
         });
 
         voteText.forEach(textVote => {
