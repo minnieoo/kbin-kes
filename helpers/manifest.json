@@ -613,7 +613,7 @@
       }, 
       {
         "type": "number",
-        "initial": 12,
+        "initial": 14,
         "key": "optionPosts",
         "label": "Posts:",
         "step": "0.1",
@@ -622,7 +622,7 @@
       }, 
       {
         "type": "number",
-        "initial": 12,
+        "initial": 14,
         "key": "optionComments",
         "label": "Comments:",
         "step": "0.1",
