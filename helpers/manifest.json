@@ -548,206 +548,6 @@
     "page": "navbar"
   },
   {
-    "name": "Customize font size",
-    "author": "minnieo",
-    "version": "0.1.0",
-    "label": "Change font size",
-    "login": false,
-    "recurs": true,
-    "desc": "Customize the font size site-wide. Note: reload required after toggling off. Uncheck transparency when finished.",
-    "entrypoint": "textResize",
-    "namespace": "resize",
-    "page": "general",
-    "catch_reset": [
-      "optionHeader",
-      "optionPosts",
-      "optionComments",
-      "optionMagSidebar",
-      "optionHomeSidebar",
-      "optionCreate",
-      "optionProfile"
-    ],
-    "fields": [
-      {
-        "type": "checkbox",
-        "checkbox_label": "Toggle transparency",
-        "initial": false,
-        "key": "transCheckbox",
-        "label": "Make modal see-through:"
-
-      },
-      {
-        "type": "reset",
-        "key": "resetNumFields",
-        "label": "Reset values to defaults:",
-        "value": "reset"
-      },
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionHeader",
-        "label": "Header:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      }, 
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionPosts",
-        "label": "Posts:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      }, 
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionComments",
-        "label": "Comments:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionMagSidebar",
-        "label": "Magazine Sidebar:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionHomeSidebar",
-        "label": "Front page Sidebar:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionCreate",
-        "label": "Create (threads, mags, links, etc):",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionProfile",
-        "label": "Profiles:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      }
-    ]
-  },
-  {
-    "name": "Customize font size",
-    "author": "minnieo",
-    "version": "0.1.0",
-    "label": "Change font size",
-    "login": false,
-    "recurs": true,
-    "desc": "Customize the font size site-wide. Note: reload required after toggling off. Uncheck transparency when finished.",
-    "entrypoint": "textResize",
-    "namespace": "resize",
-    "page": "general",
-    "catch_reset": [
-      "optionHeader",
-      "optionPosts",
-      "optionComments",
-      "optionMagSidebar",
-      "optionHomeSidebar",
-      "optionCreate",
-      "optionProfile"
-    ],
-    "fields": [
-      {
-        "type": "checkbox",
-        "checkbox_label": "Toggle transparency",
-        "initial": false,
-        "key": "transCheckbox",
-        "label": "Make modal see-through:"
-
-      },
-      {
-        "type": "reset",
-        "key": "resetNumFields",
-        "label": "Reset values to defaults:",
-        "value": "reset"
-      },
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionHeader",
-        "label": "Header:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      }, 
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionPosts",
-        "label": "Posts:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      }, 
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionComments",
-        "label": "Comments:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionMagSidebar",
-        "label": "Magazine Sidebar:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionHomeSidebar",
-        "label": "Front page Sidebar:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionCreate",
-        "label": "Create (threads, mags, links, etc):",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      },
-      {
-        "type": "number",
-        "initial": 16,
-        "key": "optionProfile",
-        "label": "Profiles:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50" 
-      }
-    ]
-  },
-  {
     "name": "Notifications panel",
     "author": "blobcat",
     "version": "0.2.8",
@@ -757,5 +557,105 @@
     "desc": "Adds a floating notifications panel to the navbar",
     "entrypoint": "notificationsPanel",
     "page": "navbar"
+  },
+  {
+    "name": "Customize font size",
+    "author": "minnieo",
+    "version": "0.1.0",
+    "label": "Change font size",
+    "login": false,
+    "recurs": true,
+    "desc": "Customize the font size site-wide. Use transparency for more control, uncheck when finished.",
+    "entrypoint": "textResize",
+    "namespace": "resize",
+    "page": "general",
+    "catch_reset": [
+      "optionHeader",
+      "optionPosts",
+      "optionComments",
+      "optionMagSidebar",
+      "optionHomeSidebar",
+      "optionCreate",
+      "optionProfile"
+    ],
+    "fields": [
+      {
+        "type": "checkbox",
+        "checkbox_label": "Toggle transparency",
+        "initial": false,
+        "key": "transCheckbox",
+        "label": "Make modal see-through:"
+
+      },
+      {
+        "type": "reset",
+        "key": "resetNumFields",
+        "label": "Reset values to defaults:",
+        "value": "reset"
+      },
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionHeader",
+        "label": "Header:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      }, 
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionPosts",
+        "label": "Posts:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      }, 
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionComments",
+        "label": "Comments:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionMagSidebar",
+        "label": "Magazine Sidebar:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionHomeSidebar",
+        "label": "Front page Sidebar:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionCreate",
+        "label": "Create (threads, mags, links, etc):",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionProfile",
+        "label": "Profiles:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      }
+    ]
   }
 ]
