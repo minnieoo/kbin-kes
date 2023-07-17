@@ -451,7 +451,9 @@
         "key": "logotype",
         "values": [
           "Hidden",
-          "Kibby"
+	  "Kbin (no text)",
+          "Kibby",
+	  "Kibby (no text)"
         ]
       }
     ]
@@ -509,31 +511,9 @@
     "label": "Report bug button on posts",
     "login": false,
     "recurs": true,
-    "desc": "Submit the contents of a post verbatim as a bug report to the KES issue tracker",
+    "desc": "Submit the contents of a post verbatim as a bug report to the KES issue tracker. Button is available from the 'More' menu under comments.",
     "entrypoint": "bugReportInit",
     "page": "debug"
-  },
-  {
-    "name": "TEST NUMBERS",
-    "author": "shazbot",
-    "version": "0.1.0",
-    "label": "TEST NUMBERS",
-    "login": false,
-    "recurs": true,
-    "desc": "TEST NUMBERS",
-    "entrypoint": "numbersInit",
-    "page": "debug",
-    "namespace": "numbertest",
-    "fields": [
-      {
-        "type": "number",
-        "initial": 20,
-        "key": "number",
-        "min": 10,
-        "max": 50,
-        "step": 10
-      }
-    ]
   },
   {
     "name": "Navbar icons",
@@ -668,35 +648,114 @@
     ]
   },
   {
-    "name": "Catch Reset Test",
-    "author": "shazbot",
+    "name": "Customize font size",
+    "author": "minnieo",
     "version": "0.1.0",
-    "label": "TEST",
-    "desc": "TEST",
+    "label": "Change font size",
     "login": false,
     "recurs": true,
-    "entrypoint": "catchResetInit",
-    "namespace": "catchResetTest",
+    "desc": "Customize the font size site-wide. Note: reload required after toggling off. Uncheck transparency when finished.",
+    "entrypoint": "textResize",
+    "namespace": "resize",
+    "page": "general",
     "catch_reset": [
-      "firstNumber",
-      "secondNumber"
+      "optionHeader",
+      "optionPosts",
+      "optionComments",
+      "optionMagSidebar",
+      "optionHomeSidebar",
+      "optionCreate",
+      "optionProfile"
     ],
     "fields": [
       {
+        "type": "checkbox",
+        "checkbox_label": "Toggle transparency",
+        "initial": false,
+        "key": "transCheckbox",
+        "label": "Make modal see-through:"
+
+      },
+      {
         "type": "reset",
-        "key": "resetAllFields"
+        "key": "resetNumFields",
+        "label": "Reset values to defaults:",
+        "value": "reset"
       },
       {
         "type": "number",
-        "initial": 12,
-        "key": "firstNumber"
+        "initial": 14,
+        "key": "optionHeader",
+        "label": "Header:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      }, 
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionPosts",
+        "label": "Posts:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      }, 
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionComments",
+        "label": "Comments:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
       },
       {
         "type": "number",
-        "initial": 12,
-        "key": "secondNumber"
+        "initial": 16,
+        "key": "optionMagSidebar",
+        "label": "Magazine Sidebar:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionHomeSidebar",
+        "label": "Front page Sidebar:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionCreate",
+        "label": "Create (threads, mags, links, etc):",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": 16,
+        "key": "optionProfile",
+        "label": "Profiles:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
       }
-    ],
-    "page": "debug"
+    ]
+  },
+  {
+    "name": "Notifications panel",
+    "author": "blobcat",
+    "version": "0.2.8",
+    "label": "Add a notifications panel",
+    "login": true,
+    "recurs": false,
+    "desc": "Adds a floating notifications panel to the navbar",
+    "entrypoint": "notificationsPanel",
+    "page": "navbar"
   }
 ]

@@ -7,7 +7,7 @@ version=$(cat VERSION)
 desc="Kbin Enhancement Suite"
 branch=$(git name-rev --name-only HEAD)
 base_file="kes.user.js"
-[[ $branch != "main" ]]  && branch="testing"
+manifest="./helpers/manifest.json"
 slug="${author}/kbin-kes"
 
 instances=(
@@ -110,15 +110,15 @@ gen_consts(){
 		const bugURL = repositoryURL + "issues"
 		const changelogURL = repositoryURL + "blob/" + branch + "/CHANGELOG.md"
 		const magURL = "https://kbin.social/m/enhancement"
+
 		//resource URLs used by legacy GM. API
 		const manifest = branchPath + helpersPath + "manifest.json"
 		const cssURL = branchPath + helpersPath + "kes.css"
 		const layoutURL = branchPath + helpersPath + "ui.json"
+
 	EOF
 }
 gen_object(){
-    manifest="./helpers/manifest.json"
-    readarray -t funcs < <(<$manifest jq -r '.[].entrypoint' | sort)
     echo "const funcObj = {"
     for (( i = 0; i < ${#funcs[@]}; i++ )); do
         if [[ $i -lt $((${#funcs[@]}-1)) ]]; then
@@ -141,11 +141,15 @@ main(){
     echo "// ==UserScript=="
     columnize | column -t -s$'\t' -o"  "
     echo "// ==/UserScript=="
+    echo ""
     echo "//START AUTO MASTHEAD"
+    wrap=$(printf "%s, " "${funcs[@]}" | sed 's/, $//')
+    printf "/* global %s */\n\n" "$wrap"
     gen_consts
     gen_object
     echo "//END AUTO MASTHEAD"
     awk 'x==1 {print $0} /END AUTO MASTHEAD/{x=1}' $base_file.bak
 }
+readarray -t funcs < <(<$manifest jq -r '.[].entrypoint' | sort)
 cp $base_file $base_file.bak
 main > $base_file

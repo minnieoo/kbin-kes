@@ -3,11 +3,14 @@ All notable changes to this project will be documented in this file.
 ## 2.0.0
 ### Added
 - Transparent Mode: click the icon to see behind the KES menu and check changes on the page; click again to return
-- Notifier on wrench icon if updates are available
-- Clipboard button to attach contents of post to KES bug report
+- Notifier on wrench icon if updates to KES are available
+- Reset button: clear all saved KES settings and reset
+- Clipboard button: copy system information to clipboard (for bug reports)
+- Notifications Panel (@blobcat): adds a navbar bell icon that opens notifications in an iframe
+- Bug-report-from-post: post contents of a message directly to the KES bug tracker
 - Support for multiple authors in attribution field
 - Support for number field minimum, maximum, and step increments
-- Debug page to sidebar
+- Debug page on sidebar
 ### Fixed
 - Support across -monkey extensions (GM, TM, VM)
 - Proper link format for authors on other instances
@@ -23,9 +26,13 @@ All notable changes to this project will be documented in this file.
 ### Added
 - kbin-federation-awareness mod
 - Support ranges in input fields
+## 1.2.2
+### Fixed
+- Highlight correct active navbar entry when using My Mags
 ## 1.2.1
 ### Fixed
 - Wrench icon occludes navbar elements when magazine title is long
+- Search icon goes missing when used in conjunction with KSP
 ## 1.2.0
 ### Added
 - Changelog link in KES header (flask icon)
