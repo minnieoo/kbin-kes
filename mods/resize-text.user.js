@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.7
+// @version      0.8.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -246,6 +246,7 @@ function resizeText() {
 
 // === USER SETTINGS GENERAL === //
     const settingsSizeMultiply = settings["optionUserSettings"] * 1.5;
+    console.log(settingsSizeMultiply);
 
     // user settings general *variables*
     const profileGeneral = document.querySelectorAll('div.container form[name="user_settings"]');
