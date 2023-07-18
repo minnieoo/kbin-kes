@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.10.2
+// @version      0.10.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -262,7 +262,7 @@ function resizeText() {
         })
     
         profGenElemH2.forEach(profElemResizeH2 => {
-            profElemResizeH2.style.setProperty('font-size', settingsSizeMultiply);
+            profElemResizeH2.style.setProperty('font-size', `${settingsSizeMultiply}px`);
         })
     })
 
@@ -388,7 +388,7 @@ function resizeText() {
         })
 
         userMessageElemH1.forEach(userMessageResizeH1 => {
-            userMessageResizeH1.style.setProperty('font-size', userMessagesSizeMultiply);
+            userMessageResizeH1.style.setProperty('font-size', `${userMessagesSizeMultiply}px`);
         })
     })
 
@@ -409,7 +409,7 @@ function resizeText() {
         })
 
         userNotifsElemH1.forEach(userNotifResizeH1 => {
-            userNotifResizeH1.style.setProperty('font-size', notifSizeMultiply);
+            userNotifResizeH1.style.setProperty('font-size', `${notifSizeMultiply}px`);
         })
 
         notifButtons.forEach(notifButtonResize => {
