@@ -48,6 +48,7 @@
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/report-bug.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/subs.user.js
 // @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/timestamp.user.js
+// @require      https://raw.githubusercontent.com/aclist/kbin-kes/testing/mods/resize-text.user.js
 // @resource     kes_layout https://raw.githubusercontent.com/aclist/kbin-kes/testing/helpers/ui.json
 // @resource     kes_json https://raw.githubusercontent.com/aclist/kbin-kes/testing/helpers/manifest.json
 // @resource     kes_css https://raw.githubusercontent.com/aclist/kbin-kes/testing/helpers/kes.css
