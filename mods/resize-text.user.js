@@ -28,6 +28,7 @@ function resizeText() {
         createPosts: `${settings["optionCreate"]}px`,
         comments: `${settings["optionComments"]}px`,
         userSettings: `${settings["optionUserSettings"]}px`,
+        userMessages: `${settings["optionMessages"]}px`
       };
 
 
@@ -241,10 +242,10 @@ function resizeText() {
     });
 
 
-// ******** USER SETTINGS ******** //
+// ⇶⇶⇶⇶⇶⇶⇶ USER SETTINGS ⬱⬱⬱⬱⬱⬱⬱ //
 
 // === USER SETTINGS GENERAL === //
-    const settingsSizeMultiply = settings["optionUserSettings"];
+    const settingsSizeMultiply = settings["optionUserSettings"] * 1.5;
 
     // user settings general *variables*
     const profileGeneral = document.querySelectorAll('div.container form[name="user_settings"]');
@@ -259,7 +260,7 @@ function resizeText() {
         })
     
         profGenElemH2.forEach(profElemResizeH2 => {
-            profElemResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profElemResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
@@ -278,7 +279,7 @@ function resizeText() {
         })
 
         profEmailElemH2.forEach(profEmailResizeH2 => {
-            profEmailResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profEmailResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
@@ -297,7 +298,7 @@ function resizeText() {
         })
 
         profEditElemH2.forEach(profEditResizeH2 => {
-            profEditResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profEditResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
@@ -316,7 +317,7 @@ function resizeText() {
         })
 
         profPassElemH2.forEach(profPassResizeH2 => {
-            profPassResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profPassResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
@@ -336,11 +337,11 @@ function resizeText() {
         })
 
         profBlockElemH2.forEach(profBlockResizeH2 => {
-            profBlockResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profBlockResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         });
 
         navLabels.forEach(navTitleResize => {
-                navTitleResize.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+                navTitleResize.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
@@ -360,17 +361,34 @@ function resizeText() {
         })
 
         profSubsElemH2.forEach(profSubResizeH2 => {
-            profSubResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+            profSubResizeH2.style.setProperty('font-size', settingsSizeMultiply);
         });
 
         subTitles.forEach(subTitleResize => {
-                subTitleResize.style.setProperty('font-size', settingsSizeMultiply * 1.5);
+                subTitleResize.style.setProperty('font-size', settingsSizeMultiply);
         })
     })
 
 
+// === USER MESSAGES === //
 
+    // user messages *variables*
+    const userMessages = document.querySelectorAll('div.page-messages');
+    const userMessagesSizeMultiply = settings["optionMessages"] * 1.5;
 
+    // user messages *loops*
+    userMessages.forEach(userMessageSelect => {
+        const userMessageElem = userMessageSelect.querySelectorAll('h2, div select, div div, input, textarea, markdown-toolbar, time, button[id="message_submit"]');
+        const userMessageElemH1 = userMessageSelect.querySelectorAll('h1, label[for="message_body"]');
+
+        userMessageElem.forEach(userMessageResize => {
+            userMessageResize.style.setProperty('font-size', fontSizes.userMessages);
+        })
+
+        userMessageElemH1.forEach(userMessageResizeH1 => {
+            userMessageResizeH1.style.setProperty('font-size', userMessagesSizeMultiply);
+        })
+    })
 
 
 
