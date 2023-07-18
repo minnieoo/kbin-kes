@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.6
+// @version      0.8.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -18,7 +18,6 @@ let eventListenerDefaultButton;
 
 function resizeText() {
     const settings = getModSettings('resize');
-    console.log(settings["optionUserSettings"])
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
@@ -253,7 +252,7 @@ function resizeText() {
 
     // user settings general *loops*
     profileGeneral.forEach(profGenSelect => {
-        const profGenElem = profGenSelect.querySelectorAll('h2, div label, div select, div div');
+        const profGenElem = profGenSelect.querySelectorAll('div label, div select, div div');
         const profGenElemH2 = profGenSelect.querySelectorAll('h2');
     
         profGenElem.forEach(profElemResize => {
