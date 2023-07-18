@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.0
+// @version      0.8.1
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -259,7 +259,7 @@ function resizeText() {
         })
     
         profGenElemH2.forEach(profElemResizeH2 => {
-            profElemResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profElemResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
@@ -278,7 +278,7 @@ function resizeText() {
         })
 
         profEmailElemH2.forEach(profEmailResizeH2 => {
-            profEmailResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profEmailResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
@@ -297,7 +297,7 @@ function resizeText() {
         })
 
         profEditElemH2.forEach(profEditResizeH2 => {
-            profEditResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profEditResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
@@ -316,7 +316,7 @@ function resizeText() {
         })
 
         profPassElemH2.forEach(profPassResizeH2 => {
-            profPassResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profPassResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
@@ -336,11 +336,11 @@ function resizeText() {
         })
 
         profBlockElemH2.forEach(profBlockResizeH2 => {
-            profBlockResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profBlockResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         });
 
         navLabels.forEach(navTitleResize => {
-                navTitleResize.style.setProperty('font-size', settingsGenMultiply * 1.5);
+                navTitleResize.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
@@ -360,11 +360,11 @@ function resizeText() {
         })
 
         profSubsElemH2.forEach(profSubResizeH2 => {
-            profSubResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+            profSubResizeH2.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         });
 
         subTitles.forEach(subTitleResize => {
-                subTitleResize.style.setProperty('font-size', settingsGenMultiply * 1.5);
+                subTitleResize.style.setProperty('font-size', settingsSizeMultiply * 1.5);
         })
     })
 
