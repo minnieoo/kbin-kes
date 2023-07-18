@@ -578,7 +578,9 @@
       "optionCreate",
       "optionProfile",
       "optionUserSettings",
-      "optionMessages"
+      "optionMessages",
+      "optionSortBy",
+      "optionNotifs"
     ],
     "fields": [
       {
