@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.9.2
+// @version      0.9.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -470,6 +470,12 @@ function resizeText() {
 
 } // end of resizeText() function //
 
+function revertFontChange() {
+    for (const key in fontSizes) {
+        fontSizes.key = initial;
+    }
+
+}
 
 function textResize(toggle) {
     if (toggle) {
@@ -477,6 +483,7 @@ function textResize(toggle) {
     } else {
         document.removeEventListener('click', eventListenerCheckbox);
         eventListenerCheckbox = null;
+        revertFontChange();
 
     }
 }
