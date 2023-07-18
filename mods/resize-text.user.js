@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.5
+// @version      0.8.6
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -17,6 +17,7 @@ let eventListenerCheckbox;
 let eventListenerDefaultButton;
 
 function resizeText() {
+    console.log(settings["optionUserSettings"])
     const settings = getModSettings('resize');
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
@@ -245,7 +246,7 @@ function resizeText() {
 // ⇶⇶⇶⇶⇶⇶⇶ USER SETTINGS ⬱⬱⬱⬱⬱⬱⬱ //
 
 // === USER SETTINGS GENERAL === //
-    const settingsSizeMultiply = parseInt(settings["optionUserSettings"]) * 1.5;
+    const settingsSizeMultiply = settings["optionUserSettings"] * 1.5;
 
     // user settings general *variables*
     const profileGeneral = document.querySelectorAll('div.container form[name="user_settings"]');
