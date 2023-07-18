@@ -17,8 +17,8 @@ let eventListenerCheckbox;
 let eventListenerDefaultButton;
 
 function resizeText() {
-    console.log(settings["optionUserSettings"])
     const settings = getModSettings('resize');
+    console.log(settings["optionUserSettings"])
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
