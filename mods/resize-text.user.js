@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.10.0
+// @version      0.10.1
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -249,8 +249,6 @@ function resizeText() {
 
 // === USER SETTINGS GENERAL === //
     const settingsSizeMultiply = parseFloat(settings["optionUserSettings"]) * 1.5;
-    console.log(settingsSizeMultiply);
-
     // user settings general *variables*
     const profileGeneral = document.querySelectorAll('div.container form[name="user_settings"]');
 
@@ -452,7 +450,7 @@ function resizeText() {
         });
 
         footerH1.forEach(footerH1Resize => {
-            footerH1Resize.style.setProperty('font-size', footerMultiply);
+            footerH1Resize.style.setProperty('font-size', fontSizes.footer);
         })
     })
     console.log(`FOOTER MULTIPLIED: ${footerMultiply}`);
@@ -465,15 +463,12 @@ function resizeText() {
             const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
         
             if (e.target.type === 'checkbox' && e.target.getAttribute('kes-key') === 'transCheckbox') {
-                console.log('CHECKBOX HAS BEEN CLICKED');
         
                 if (transCheckbox.checked) {
-                    console.log('CHECKBOX HAS BEEN CHECKED');
                     kesModalContent.style.backgroundColor = '#2c2c2c00';
                     kesModalContainer.style.backgroundColor = 'transparent';
         
                 } else {
-                    console.log('CHECKBOX HAS BEEN !!UNCHECKED!!');
                     kesModalContent.style.backgroundColor = '';
                     kesModalContainer.style.backgroundColor = '';
                 }
