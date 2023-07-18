@@ -580,7 +580,8 @@
       "optionUserSettings",
       "optionMessages",
       "optionSortBy",
-      "optionNotifs"
+      "optionNotifs",
+      "optionFooter"
     ],
     "fields": [
       {
@@ -692,6 +693,15 @@
         "initial": 16,
         "key": "optionMessages",
         "label": "Messages:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50" 
+      },
+      {
+        "type": "number",
+        "initial": 13,
+        "key": "optionFooter",
+        "label": "Footer:",
         "step": "0.1",
         "min": "5",
         "max": "50" 
