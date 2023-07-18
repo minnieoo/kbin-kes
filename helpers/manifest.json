@@ -576,7 +576,8 @@
       "optionMagSidebar",
       "optionHomeSidebar",
       "optionCreate",
-      "optionProfile"
+      "optionProfile",
+      "optionUserSettings"
     ],
     "fields": [
       {
