@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.10.1
+// @version      0.10.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -450,10 +450,12 @@ function resizeText() {
         });
 
         footerH1.forEach(footerH1Resize => {
-            footerH1Resize.style.setProperty('font-size', fontSizes.footer);
+            footerH1Resize.style.setProperty('font-size', `${footerMultiply}px`);
         })
     })
     console.log(`FOOTER MULTIPLIED: ${footerMultiply}`);
+
+
 
 // === TRANSPARENCY CHECKBOX FUNCTIONALITY === //
     if (!eventListenerCheckbox) {
