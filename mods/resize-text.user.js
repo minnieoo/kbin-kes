@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.9.6
+// @version      0.9.5
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -16,7 +16,8 @@
 let eventListenerCheckbox;
 let eventListenerDefaultButton;
 
-const settings = getModSettings('resize');
+function resizeText() {
+    const settings = getModSettings('resize');
 // === FONT SIZE SETTINGS OBJ === //
     const fontSizes = {
         header: `${settings["optionHeader"]}px`,
@@ -31,9 +32,6 @@ const settings = getModSettings('resize');
         userNotifs: `${settings["optionNotifs"]}px`,
         sortBy: `${settings["optionSortBy"]}px`
       };
-
-function resizeText() {
-
 
 
 
@@ -468,15 +466,15 @@ function resizeText() {
         document.addEventListener('click', eventListenerCheckbox);
     }
 
-
-} // end of resizeText() function //
-
-function revertFontChange() {
-    for (const key in fontSizes) {
-        fontSizes[key] = initial;
+    function revertFontChange() {
+        for (const key in fontSizes) {
+            fontSizes[key] = initial;
+        }
+    
     }
 
-}
+
+} // end of resizeText() function //
 
 
 function textResize(toggle) {
