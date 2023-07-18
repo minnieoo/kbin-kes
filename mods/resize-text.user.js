@@ -26,8 +26,10 @@ function resizeText() {
         homeSidebar: `${settings["optionHomeSidebar"]}px`,
         profile: `${settings["optionProfile"]}px`,
         createPosts: `${settings["optionCreate"]}px`,
-        comments: `${settings["optionComments"]}px`
+        comments: `${settings["optionComments"]}px`,
+        userSettings: `${settings["optionUserSettings"]}px`,
       };
+
 
 
 // === HEADER === //
@@ -84,7 +86,6 @@ function resizeText() {
             })
 
         voteText.forEach(textVote => {
-           // let textVoteSize = `${contentSizeNum * 1.05}pt`;
             textVote.style.setProperty('font-size', fontSizes.posts);
         });
 
@@ -240,6 +241,132 @@ function resizeText() {
     });
 
 
+// ******** USER SETTINGS ******** //
+
+// === USER SETTINGS GENERAL === //
+    const settingsSizeMultiply = settings["optionUserSettings"];
+
+    // user settings general *variables*
+    const profileGeneral = document.querySelectorAll('div.container form[name="user_settings"]');
+
+    // user settings general *loops*
+    profileGeneral.forEach(profGenSelect => {
+        const profGenElem = profGenSelect.querySelectorAll('h2, div label, div select, div div');
+        const profGenElemH2 = profGenSelect.querySelectorAll('h2');
+    
+        profGenElem.forEach(profElemResize => {
+            profElemResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+    
+        profGenElemH2.forEach(profElemResizeH2 => {
+            profElemResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
+
+// === USER SETTINGS EMAIL === //
+
+    // user settings email *variables*
+    const profileEmail = document.querySelectorAll('div.container form[name="user_email"]');
+
+    // user settings email *loops*
+    profileEmail.forEach(profEmailSelect => {
+        const profEmailElem = profEmailSelect.querySelectorAll('h2, div label, div select, div div, input');
+        const profEmailElemH2 = profEmailSelect.querySelectorAll('h2');
+
+        profEmailElem.forEach(profEmailResize => {
+            profEmailResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+
+        profEmailElemH2.forEach(profEmailResizeH2 => {
+            profEmailResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
+
+// === USER SETTINGS PROFILE EDITING === //
+
+    // user settings profile editing *variables*
+    const profileEdit = document.querySelectorAll('div.container form[name="user_basic"]');
+
+    // user settings profile editing *loops*
+    profileEdit.forEach(profEditSelect => {
+        const profEditElem = profEditSelect.querySelectorAll('h2, div select, div div, input, textarea, markdown-toolbar');
+        const profEditElemH2 = profEditSelect.querySelectorAll('div label');
+
+        profEditElem.forEach(profEditResize => {
+            profEditResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+
+        profEditElemH2.forEach(profEditResizeH2 => {
+            profEditResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
+
+// === USER SETTINGS PASSWORD === //
+
+    // user settings password *variables*
+    const profilePassword = document.querySelectorAll('div.container form[name="user_password"]');
+
+    // user settings password *loops*
+    profilePassword.forEach(profPassSelect => {
+        const profPassElem = profPassSelect.querySelectorAll('h2, div label, div select, div div, input');
+        const profPassElemH2 = profPassSelect.querySelectorAll('h2');
+
+        profPassElem.forEach(profPassResize => {
+            profPassResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+
+        profPassElemH2.forEach(profPassResizeH2 => {
+            profPassResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
+
+// === USER SETTINGS BLOCKED === //
+
+    // user settings blocked *variables*
+    const profileBlocked = document.querySelectorAll('div.page-settings.page-settings-block-magazines');
+    const navLabels = document.querySelectorAll('.pills li a');
+
+    // user settings blocked *loops*
+    profileBlocked.forEach(profBlockSelect => {
+        const profBlockElem = profBlockSelect.querySelectorAll('h2, div label, div select, div div, input, li, a, ul, small');
+        const profBlockElemH2 = profBlockSelect.querySelectorAll('h2');
+
+        profBlockElem.forEach(profBlockResize => {
+            profBlockResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+
+        profBlockElemH2.forEach(profBlockResizeH2 => {
+            profBlockResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        });
+
+        navLabels.forEach(navTitleResize => {
+                navTitleResize.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
+
+// === USER SETTINGS SUBSCRIPTIONS === //
+
+    // user settings subscriptions *variables*
+    const profileSubs = document.querySelectorAll('div.page-settings.page-settings-sub-magazines');
+    const subTitles = document.querySelectorAll('div.page-settings-sub-magazines div.pills li a');
+
+    // user settings subscriptions *loops*
+    profileSubs.forEach(profSubsSelect => {
+        const profSubsElem = profSubsSelect.querySelectorAll('h2, div label, div select, div div, input, li, a, ul, small');
+        const profSubsElemH2 = profSubsSelect.querySelectorAll('h2');
+
+        profSubsElem.forEach(profSubsResize => {
+            profSubsResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+        })
+
+        profSubsElemH2.forEach(profSubResizeH2 => {
+            profSubResizeH2.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        });
+
+        subTitles.forEach(subTitleResize => {
+                subTitleResize.style.setProperty('font-size', settingsGenMultiply * 1.5);
+        })
+    })
 
 
 
@@ -277,46 +404,6 @@ function resizeText() {
         document.addEventListener('click', eventListenerCheckbox);
     }
 
-// // === RESET TO DEFAULTS FUNCTIONALITY === //
-
-// if (!eventListenerDefaultButton) {
-//     eventListenerDefaultButton = (e) => {
-//       const defaultButton = document.querySelector('input[kes-key="defaultButton"]'); //button
-//       const buttonColor = defaultButton.style.backgroundColor;
-//       function buttonStyle(button) {
-//         button.style.backgroundColor = buttonColor;
-//       }
-  
-//       if (e.target.type === 'button' && e.target.getAttribute('kes-key') === 'defaultButton') {
-//         console.log('Reset defaults button clicked');
-//         defaultButton.style.backgroundColor = '#079D0C'
-//         setTimeout(() => buttonStyle(defaultButton), 500);
-  
-//         const numSelectMain = document.querySelectorAll('input[kes-key^="option"]');
-  
-//         numSelectMain.forEach(numSelectElem => {
-//           numSelectElem.setAttribute("value", "12");
-//           numSelectElem.value = "12";
-//           numSelectElem.dispatchEvent(new Event('input')); // update CSS
-  
-//           // Apply updated font size to the corresponding element
-//           const optionKey = numSelectElem.getAttribute('kes-key');
-//           const elementToUpdate = document.querySelector(`[kes-key="${optionKey}"]`);
-//           if (elementToUpdate) {
-//             elementToUpdate.style.fontSize = fontSizes[optionKey];
-//           }
-//         });
-  
-//         Object.keys(fontSizes).forEach(key => {
-//           console.log(key + ': ' + fontSizes[key])
-//           fontSizes[key] = '12px';
-//           console.log(`UPDATED: ${key}: ${fontSizes[key]}`)
-//         });
-//       }
-//     }
-  
-//     document.addEventListener('click', eventListenerDefaultButton);
-//   }
 
 
 } // end of resizeText() function //
@@ -327,9 +414,7 @@ function textResize(toggle) {
         resizeText();
     } else {
         document.removeEventListener('click', eventListenerCheckbox);
-        document.removeEventListener('click', eventListenerDefaultButton);
         eventListenerCheckbox = null;
-        eventListenerDefaultButton = null;
 
     }
 }
