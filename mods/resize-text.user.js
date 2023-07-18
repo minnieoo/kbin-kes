@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.9
+// @version      0.9.0
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -375,7 +375,7 @@ function resizeText() {
 
     // user messages *variables*
     const userMessages = document.querySelectorAll('div.page-messages');
-    const userMessagesSizeMultiply = parseInt(settings["optionMessages"]) * 1.5;
+    const userMessagesSizeMultiply = parseFloat(settings["optionMessages"]) * 1.5;
 
     // user messages *loops*
     userMessages.forEach(userMessageSelect => {
