@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.9.3
+// @version      0.9.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -472,7 +472,7 @@ function resizeText() {
 
 function revertFontChange() {
     for (const key in fontSizes) {
-        fontSizes.key = initial;
+        fontSizes[key] = initial;
     }
 
 }
