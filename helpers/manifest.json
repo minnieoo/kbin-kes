@@ -581,6 +581,15 @@
     ],
     "fields": [
       {
+        "type": "number",
+        "initial": 16,
+        "key": "optionUserSettings",
+        "label": "Settings:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
         "type": "checkbox",
         "checkbox_label": "Toggle transparency",
         "initial": false,
@@ -660,11 +669,11 @@
       {
         "type": "number",
         "initial": 16,
-        "key": "optionUserSettings",
-        "label": "Settings:",
+        "key": "optionMessages",
+        "label": "Messages:",
         "step": "0.1",
         "min": "5",
-        "max": "50"
+        "max": "50" 
       }
     ]
   }
