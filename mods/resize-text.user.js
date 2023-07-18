@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.9.0
+// @version      0.9.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -28,7 +28,9 @@ function resizeText() {
         createPosts: `${settings["optionCreate"]}px`,
         comments: `${settings["optionComments"]}px`,
         userSettings: `${settings["optionUserSettings"]}px`,
-        userMessages: `${settings["optionMessages"]}px`
+        userMessages: `${settings["optionMessages"]}px`,
+        userNotifs: `${settings["optionNotifs"]}px`,
+        sortBy: `${settings["optionSortBy"]}px`
       };
 
 
@@ -391,7 +393,48 @@ function resizeText() {
         })
     })
 
+// === USER NOTIFICATIONS === //
 
+    // user notifs *variables*
+    const userNotifications = document.querySelectorAll('div.page-notifications');
+    const notifButtons = document.querySelectorAll('div.pills form[action="/settings/notifications/read"] button.btn');
+    const notifSizeMultiply = parseFloat(settings["optionNotifs"]) * 1.5;
+
+    // user notifs *loops*
+    userNotifications.forEach(userNotifsSelect => {
+        const userNotifsElem = userNotifsSelect.querySelectorAll('h2, div select, div div, input, textarea, markdown-toolbar, time, form.me-2 button[id="submit"]');
+        const userNotifsElemH1 = userNotifsSelect.querySelectorAll('h1, label[for="message_body"]');
+
+        userNotifsElem.forEach(userNotifResize => {
+            userNotifResize.style.setProperty('font-size', fontSizes.userNotifs);
+        })
+
+        userNotifsElemH1.forEach(userNotifResizeH1 => {
+            userNotifResizeH1.style.setProperty('font-size', notifSizeMultiply);
+        })
+
+        notifButtons.forEach(notifButtonResize => {
+            const notifPurge = notifButtonResize.querySelectorAll('.btn.btn__secondary span');
+
+            notifButtonResize.style.setProperty('font-size', fontSizes.userNotifs);
+
+            notifPurge.forEach(notifPurgeResize => {
+                notifPurgeResize.style.setProperty('font-size', fontSizes.userNotifs);
+            })
+        })
+
+    })
+
+// === SORT BY === // 
+
+    // sort by *variables*
+    const sortBy = document.querySelectorAll('aside#options menu li a, aside#options menu i');
+
+    // sort by *loops*
+    sortBy.forEach(sortByElem => {
+        sortByElem.style.setProperty('font-size', fontSizes.sortBy);
+    })
+    
 
 // === TRANSPARENCY CHECKBOX FUNCTIONALITY === //
     if (!eventListenerCheckbox) {
