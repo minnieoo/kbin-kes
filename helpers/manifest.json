@@ -577,7 +577,8 @@
       "optionHomeSidebar",
       "optionCreate",
       "optionProfile",
-      "optionUserSettings"
+      "optionUserSettings",
+      "optionMessages"
     ],
     "fields": [
       {
@@ -602,15 +603,6 @@
         "step": "0.1",
         "min": "5",
         "max": "50"
-      },
-      {
-        "type": "number",
-        "initial": 14,
-        "key": "optionHeader",
-        "label": "Header:",
-        "step": "0.1",
-        "min": "5",
-        "max": "50"
       }, 
       {
         "type": "number",
@@ -626,6 +618,33 @@
         "initial": 14,
         "key": "optionComments",
         "label": "Comments:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionNotifs",
+        "label": "Notifications:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionHeader",
+        "label": "Header:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionSortBy",
+        "label": "Sort by bar:",
         "step": "0.1",
         "min": "5",
         "max": "50"
