@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.8.2
+// @version      0.8.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -255,7 +255,7 @@ function resizeText() {
         const profGenElemH2 = profGenSelect.querySelectorAll('h2');
     
         profGenElem.forEach(profElemResize => {
-            profElemResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profElemResize.style.setProperty('font-size', fontSizes.userSettings);
         })
     
         profGenElemH2.forEach(profElemResizeH2 => {
@@ -274,7 +274,7 @@ function resizeText() {
         const profEmailElemH2 = profEmailSelect.querySelectorAll('h2');
 
         profEmailElem.forEach(profEmailResize => {
-            profEmailResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profEmailResize.style.setProperty('font-size', fontSizes.userSettings);
         })
 
         profEmailElemH2.forEach(profEmailResizeH2 => {
@@ -293,7 +293,7 @@ function resizeText() {
         const profEditElemH2 = profEditSelect.querySelectorAll('div label');
 
         profEditElem.forEach(profEditResize => {
-            profEditResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profEditResize.style.setProperty('font-size', fontSizes.userSettings);
         })
 
         profEditElemH2.forEach(profEditResizeH2 => {
@@ -312,7 +312,7 @@ function resizeText() {
         const profPassElemH2 = profPassSelect.querySelectorAll('h2');
 
         profPassElem.forEach(profPassResize => {
-            profPassResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profPassResize.style.setProperty('font-size', fontSizes.userSettings);
         })
 
         profPassElemH2.forEach(profPassResizeH2 => {
@@ -332,7 +332,7 @@ function resizeText() {
         const profBlockElemH2 = profBlockSelect.querySelectorAll('h2');
 
         profBlockElem.forEach(profBlockResize => {
-            profBlockResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profBlockResize.style.setProperty('font-size', fontSizes.userSettings);
         })
 
         profBlockElemH2.forEach(profBlockResizeH2 => {
@@ -356,7 +356,7 @@ function resizeText() {
         const profSubsElemH2 = profSubsSelect.querySelectorAll('h2');
 
         profSubsElem.forEach(profSubsResize => {
-            profSubsResize.style.setProperty('font-size', fontSizes.optionUserSettings);
+            profSubsResize.style.setProperty('font-size', fontSizes.userSettings);
         })
 
         profSubsElemH2.forEach(profSubResizeH2 => {
