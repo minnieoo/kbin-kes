@@ -30,7 +30,8 @@ function resizeText() {
         userSettings: `${settings["optionUserSettings"]}px`,
         userMessages: `${settings["optionMessages"]}px`,
         userNotifs: `${settings["optionNotifs"]}px`,
-        sortBy: `${settings["optionSortBy"]}px`
+        sortBy: `${settings["optionSortBy"]}px`,
+        footer: `${settings["optionFooter"]}px`
       };
 
 
@@ -434,7 +435,26 @@ function resizeText() {
     sortBy.forEach(sortByElem => {
         sortByElem.style.setProperty('font-size', fontSizes.sortBy);
     })
-    
+
+// === Footer === // 
+
+    //footer *variables*
+    const footerUseful = document.querySelectorAll('footer#footer');
+    const footerMultiply = parseFloat(settings["optionFooter"]) * 1.5;
+
+    //footer *loops*
+    footerUseful.forEach(footerSelect => {
+        const footerElems = footerSelect.querySelectorAll('section menu li a, section div a, div li a, i, select[data-action="kbin#changeLang"], #text');
+        const footerH1 = footerSelect.querySelectorAll('section h5');
+
+        footerElems.forEach(footerResize => {
+            footerResize.style.setProperty('font-size', fontSizes.footer);
+        });
+
+        footerH1.forEach(footerH1Resize => {
+            footerH1Resize.style.setProperty('font-size', footerMultiply);
+        })
+    })
 
 // === TRANSPARENCY CHECKBOX FUNCTIONALITY === //
     if (!eventListenerCheckbox) {
@@ -464,6 +484,11 @@ function resizeText() {
         }
         
         document.addEventListener('click', eventListenerCheckbox);
+    }
+
+    function revertSizes() {
+        resizeHeaderElems.style.setProperty('font-size', initial);
+
     }
 
 
