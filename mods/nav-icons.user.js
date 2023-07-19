@@ -1,4 +1,4 @@
-// @version     0.1.5
+// @version     0.1.6
 
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
@@ -6,11 +6,10 @@ function navbarIcons (toggle) {
     let post = settings.post
     let subs = settings.subs
     let font = settings.font
+    const fa = document.querySelector('.fa-solid.fa-magnifying-glass');
+    fa.style.setProperty('font-family', 'Anton');
     if (toggle) {
         let selectedFont = '${font}';
-        const fa = document.querySelector('.fa-solid.fa-magnifying-glass');
-        fa.style.setProperty('font-family', 'Anton');
-
         document.styleSheets[0].addRule('a[href="/search"] i', 'font-family: "Anton";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
