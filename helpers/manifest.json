@@ -548,7 +548,7 @@
         "initial": 500,
         "key": "fontWeight",
         "label": "Select a font weight",
-        "step": "100",
+        "step": 100,
         "min": 300,
         "max": 900,
         "show_value": true
