@@ -8,9 +8,9 @@ function navbarIcons (toggle) {
     let font = settings.font
     if (toggle) {
         let selectedFont = `font-family: '${settings.font}';`;
-        document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + font + '"; font-family: "' + font + '";');
-        document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
-        document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
+        document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + font + '"; font-family: "' + settings.font + '";');
+        document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + font + '";');
+        document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + font + '";');
 
         // const searchText = document.querySelector('header menu li a[aria-label="Search"] i:before');
         // const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
