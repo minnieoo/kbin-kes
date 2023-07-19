@@ -9,6 +9,7 @@ function navbarIcons (toggle) {
     if (toggle) {
         let selectedFont = '${font}';
         document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";');
+        document.styleSheets[0].addRule('header menu li a[aria-label="Search"]', 'font-family: "' + font + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
 
@@ -16,9 +17,6 @@ function navbarIcons (toggle) {
         const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
         const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i:before');
     
-        searchText.forEach(searchElem => {
-            searchElem.style.setProperty('font-family', 'Anton');
-        })
         searchText.style.setProperty('font-family', 'Anton');
         // // addText.style.setProperty('font-family', `'${settings.font};'`);
         // // channelText.style.setProperty('font-family', `'${settings.font};'`);
