@@ -527,6 +527,15 @@
     "namespace": "nav_icons",
     "fields": [
       {
+        "type": "select",
+        "initial": "",
+        "key": "font",
+        "values": [
+          "Segoe UI",
+          "Quicksand"
+        ]
+      },
+      {
         "type": "text",
         "initial": "Search",
         "key": "search",
