@@ -6,7 +6,7 @@ function navbarIcons (toggle) {
     let post = settings.post
     let subs = settings.subs
     if (toggle) {
-        selectedFont = 'font-family: ' + settings.font + ';';
+        let selectedFont = 'font-family: ' + settings.font + ';';
         document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";' + selectedFont);
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
