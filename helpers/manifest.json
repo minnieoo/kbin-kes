@@ -530,6 +530,7 @@
         "type": "select",
         "initial": "",
         "key": "font",
+        "label": "Select a font",
         "values": [
           "Segoe UI",
           "Quicksand"
