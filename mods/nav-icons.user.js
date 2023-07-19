@@ -8,7 +8,7 @@ function navbarIcons (toggle) {
     let font = settings.font
     if (toggle) {
         console.log('font test' + font);
-        document.styleSheets[0].addRule(  'header menu li a[aria-label="Search"] i::before', `content: '${search}'; font-family: '${selectedFont}';`);
+        document.styleSheets[0].addRule(  'header menu li a[aria-label="Search"] i::before', `content: '${search}'; font-family: '${font}';`);
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
     
