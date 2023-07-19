@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.11.0
+// @version      0.11.1
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -67,6 +67,7 @@ function resizeText() {
 // === POSTS === //
     // post *variables*
     const postContent = document.querySelectorAll('article.entry');
+    const postMultiply = settings["optionPosts"];
 
     // post *loops*
     postContent.forEach(postContentElem => {
@@ -87,7 +88,7 @@ function resizeText() {
 
         textContentH1.forEach(postResizeH1 => {
             const postSizeNumH1 = settings["optionPosts"];
-            postResizeH1.style.setProperty('font-size', `${postSizeNumH1 * 1.2}px`);
+            postResizeH1.style.setProperty('font-size', `${postMultiply * 1.2}px`);
             })
 
         voteText.forEach(textVote => {
@@ -95,7 +96,7 @@ function resizeText() {
         });
 
         domainTitle.forEach(titleDomainResize => {
-            titleDomainResize.style.setProperty('font-size', `${postSizeNumH1 * .4}px`);
+            titleDomainResize.style.setProperty('font-size', `${postMultiply * .4}px`);
             // const domainLinks = titleDomainResize.querySelectorAll('a, span.entry__domain, #text');
             // const leftParenthesis = titleDomainResize.firstChild;
             // const rightParenthesis = titleDomainResize.lastChild;
