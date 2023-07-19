@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.11.1
+// @version      0.11.2
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -74,7 +74,7 @@ function resizeText() {
         const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"]), small.badge');
         const textContentH1 = postContentElem.querySelectorAll('header span.entry__domain, article.entry header h1 a');
         const textContentH2 = postContentElem.querySelectorAll('header span.entry__domain, article.entry.section.subject h2 a');
-        const domainTitle = postContentElem.querySelectorAll('header span > a');
+        const domainTitle = postContentElem.querySelectorAll('header span.entry__domain');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
         const postSizeNum = settings["optionPosts"];
 
@@ -96,18 +96,9 @@ function resizeText() {
         });
 
         domainTitle.forEach(titleDomainResize => {
+             // const domain = titleDomainResize.querySelectorAll('')
             titleDomainResize.style.setProperty('font-size', `${postMultiply * .4}px`);
-            // const domainLinks = titleDomainResize.querySelectorAll('a, span.entry__domain, #text');
-            // const leftParenthesis = titleDomainResize.firstChild;
-            // const rightParenthesis = titleDomainResize.lastChild;
-
-            // domainLinks.forEach(domainResize => {
-            //     domainResize.style.setProperty('font-size', `${postSizeNum * 0.7}px`)
-            //     domainResize.style.setProperty('opacity', '0.8');
-            // });
-
-            // leftParenthesis.style.setProperty('font-size', `${postSizeNum * 0.7}px`);
-            // rightParenthesis.style.setProperty('opacity', '0.8');
+    
 
         });
 
