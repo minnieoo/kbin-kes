@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.10.6
+// @version      0.10.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -73,7 +73,7 @@ function resizeText() {
         const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"]), small.badge');
         const textContentH1 = postContentElem.querySelectorAll('header span.entry__domain, article.entry header h1 a');
         const textContentH2 = postContentElem.querySelectorAll('header span.entry__domain, article.entry.section.subject h2 a');
-        const domainTitle = postContentElem.querySelectorAll('header span.entry__domain, span.entry__domain a');
+        const domainTitle = postContentElem.querySelectorAll('header span.entry__domain');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
         const postSizeNum = settings["optionPosts"];
 
@@ -95,8 +95,13 @@ function resizeText() {
         });
 
         domainTitle.forEach(titleDomainResize => {
-            titleDomainResize.style.setProperty('font-size', `${postSizeNum * 0.3}px`)
-            titleDomainResize.style.setProperty('opacity', '0.7');
+            const domainLinks = titleDomainResize.querySelectorAll('a, span.entry__domain');
+
+            domainLinks.forEach(domainResize => {
+                domainResize.style.setProperty('font-size', `${postSizeNum * 0.3}px`)
+                domainResize.style.setProperty('opacity', '0.7');
+            })
+
         });
 
     });
