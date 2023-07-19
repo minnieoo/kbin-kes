@@ -545,12 +545,12 @@
       },
       {
         "type": "range",
-        "initial": "500",
+        "initial": 5,
         "key": "fontWeight",
         "label": "Select a font weight",
-        "step": "100",
-        "min": "300",
-        "max": "900",
+        "step": 1,
+        "min": 3,
+        "max": 9,
         "show_value": true
       },
       {
