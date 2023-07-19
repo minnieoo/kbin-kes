@@ -1,4 +1,4 @@
-// @version     0.0.3
+// @version     0.0.4
 
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
@@ -7,7 +7,7 @@ function navbarIcons (toggle) {
     let subs = settings.subs
     if (toggle) {
         let selectedFont = `font-family: '${settings.font}';`;
-        document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";' + selectedFont);
+        document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";', 'font-family: "' + settings.font + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
 
