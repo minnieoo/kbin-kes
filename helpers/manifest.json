@@ -545,7 +545,7 @@
       },
       {
         "type": "range",
-        "initial": "500",
+        "initial": 500,
         "key": "fontWeight",
         "label": "Select a font weight",
         "step": "100",
