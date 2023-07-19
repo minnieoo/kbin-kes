@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.12.7
+// @version      0.12.8
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -89,7 +89,7 @@ function resizeText() {
     domainTitle.forEach(titleDomainResize => {
         // const domain = titleDomainResize.querySelectorAll('')
        titleDomainResize.style.setProperty('font-size', `${postSizeNum * .8}px`);
-       titleDomainResize.style.setProperty('color', 'var(--kbin-meta-text-color)');
+       titleDomainResize.style.setProperty('opacity', '.5');
    });
 
     textContentH2.forEach(postTitles => {
