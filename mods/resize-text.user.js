@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.12.6
+// @version      0.12.7
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -68,7 +68,7 @@ function resizeText() {
     // post *variables*
     const postContent = document.querySelectorAll('article.entry');
     const domainTitle = document.querySelectorAll('.entry__domain, .entry__domain a');
-    const textContentH2 = document.querySelectorAll('.entry header h1 a:not(.entry__domain), .entry header h2 a:not(.entry__domain)');
+    const textContentH2 = document.querySelectorAll('.entry header h1 a:not(.entry__domain a), .entry header h2 a:not(.entry__domain a)');
     const postSizeNum = settings["optionPosts"];
 
 
