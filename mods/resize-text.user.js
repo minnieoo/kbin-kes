@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.11.2
+// @version      0.11.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -74,7 +74,7 @@ function resizeText() {
         const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"]), small.badge');
         const textContentH1 = postContentElem.querySelectorAll('header span.entry__domain, article.entry header h1 a');
         const textContentH2 = postContentElem.querySelectorAll('header span.entry__domain, article.entry.section.subject h2 a');
-        const domainTitle = postContentElem.querySelectorAll('header span.entry__domain');
+        const domainTitle = postContentElem.querySelectorAll('.entry__domain');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
         const postSizeNum = settings["optionPosts"];
 
