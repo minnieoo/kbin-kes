@@ -533,7 +533,10 @@
         "label": "Select a font",
         "values": [
           "Segoe UI",
-          "Quicksand"
+          "Quicksand",
+          "Calibri",
+          "Arial",
+          "Times New Roman"
         ]
       },
       {
