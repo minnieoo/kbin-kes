@@ -1,4 +1,4 @@
-// @version     0.0.9
+// @version     0.1.0
 
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
@@ -12,10 +12,13 @@ function navbarIcons (toggle) {
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
 
-        const searchText = document.querySelector('a[href="/search"] i');
+        const searchText = document.querySelectorAll('a[href="/search"] i');
         const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
         const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i:before');
     
+        searchText.forEach(searchElem => {
+            searchElem.style.setProperty('font-family', 'Anton');
+        })
         searchText.style.setProperty('font-family', 'Anton');
         // // addText.style.setProperty('font-family', `'${settings.font};'`);
         // // channelText.style.setProperty('font-family', `'${settings.font};'`);
