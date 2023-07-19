@@ -1,4 +1,4 @@
-// @version     0.0.2
+// @version     0.0.3
 
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
@@ -6,7 +6,7 @@ function navbarIcons (toggle) {
     let post = settings.post
     let subs = settings.subs
     if (toggle) {
-        let selectedFont = 'font-family: ' + settings.font + ';';
+        let selectedFont = `font-family: ${settings.font};`;
         document.styleSheets[0].addRule('header menu li a[aria-label="Search"] i::before', 'content: "' + search + '";' + selectedFont);
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
@@ -15,7 +15,7 @@ function navbarIcons (toggle) {
         const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
         const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i:before');
     
-        // searchText.style.setProperty('font-family', `'${settings.font};'`);
+        searchText.style.setProperty('font-family', selectedFont);
         // addText.style.setProperty('font-family', `'${settings.font};'`);
         // channelText.style.setProperty('font-family', `'${settings.font};'`);
         console.log(settings.font);
