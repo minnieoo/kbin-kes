@@ -9,9 +9,9 @@ function navbarIcons (toggle) {
         document.styleSheets[0].addRule('header menu li a[aria-label="Add"] i::before', 'content: "' + post + '";');
         document.styleSheets[0].addRule('header menu li a[aria-label="Select a channel"] i::before', 'content: "' + subs + '";');
 
-        const searchText = document.querySelector('header menu li a[aria-label="Search"] i::before');
-        const addText = document.querySelector('header menu li a[aria-label="Add"] i::before');
-        const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i::before');
+        const searchText = document.querySelector('header menu li a[aria-label="Search"] i:before');
+        const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
+        const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i:before');
     
         searchText.style.setProperty('font-family', `'${settings.font}'`);
         addText.style.setProperty('font-family', `'${settings.font}'`);
