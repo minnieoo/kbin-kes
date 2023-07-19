@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.11.3
+// @version      0.11.4
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -68,16 +68,16 @@ function resizeText() {
     // post *variables*
     const postContent = document.querySelectorAll('article.entry');
     const postMultiply = settings["optionPosts"];
+    const domainTitle = document.querySelectorAll('.entry__domain');
+    const postSizeNum = settings["optionPosts"];
+
 
     // post *loops*
     postContent.forEach(postContentElem => {
         const textContentElements = postContentElem.querySelectorAll('h1.a, h3, p, a, time, button:not([data-action="subject#vote"]), small.badge');
         const textContentH1 = postContentElem.querySelectorAll('header span.entry__domain, article.entry header h1 a');
         const textContentH2 = postContentElem.querySelectorAll('header span.entry__domain, article.entry.section.subject h2 a');
-        const domainTitle = postContentElem.querySelectorAll('.entry__domain');
         const voteText = postContentElem.querySelectorAll('span[data-subject-target="favCounter"], span[data-subject-target="downvoteCounter"], i.fa-arrow-up, i.fa-arrow-down');
-        const postSizeNum = settings["optionPosts"];
-
         textContentElements.forEach(textContentElem => {
             textContentElem.style.setProperty('font-size', fontSizes.posts);
         });
@@ -89,20 +89,20 @@ function resizeText() {
         textContentH1.forEach(postResizeH1 => {
             const postSizeNumH1 = settings["optionPosts"];
             postResizeH1.style.setProperty('font-size', `${postMultiply * 1.2}px`);
-            })
+        })
 
         voteText.forEach(textVote => {
             textVote.style.setProperty('font-size', fontSizes.posts);
         });
 
-        domainTitle.forEach(titleDomainResize => {
-             // const domain = titleDomainResize.querySelectorAll('')
-            titleDomainResize.style.setProperty('font-size', `${postMultiply * .4}px`);
-    
-
-        });
-
     });
+
+    domainTitle.forEach(titleDomainResize => {
+        // const domain = titleDomainResize.querySelectorAll('')
+       titleDomainResize.style.setProperty('font-size', `${postMultiply * .4}px`);
+
+
+   });
 
 
 // === COMMENTS  === //
