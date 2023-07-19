@@ -1,3 +1,5 @@
+// @version     0.0.1
+
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
     let search = settings.search
