@@ -1,4 +1,4 @@
-// @version     0.0.8
+// @version     0.0.9
 
 function navbarIcons (toggle) {
     let settings = getModSettings("nav_icons");
@@ -16,7 +16,7 @@ function navbarIcons (toggle) {
         const addText = document.querySelector('header menu li a[aria-label="Add"] i:before');
         const channelText = document.querySelector('header menu li a[aria-label="Select a channel"] i:before');
     
-        searchText.style.setProperty('font-family', selectedFont);
+        searchText.style.setProperty('font-family', 'Anton');
         // // addText.style.setProperty('font-family', `'${settings.font};'`);
         // // channelText.style.setProperty('font-family', `'${settings.font};'`);
         // console.log(settings.font);
