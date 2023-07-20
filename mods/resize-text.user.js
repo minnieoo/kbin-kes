@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.13.0
+// @version      0.13.1
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -457,36 +457,38 @@ function resizeText() {
 
 
 // === TRANSPARENCY CHECKBOX FUNCTIONALITY === //
-    if (!eventListenerCheckbox) {
-        eventListenerCheckbox = (e) => {
-            const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
-            const kesModalContent = document.querySelector('div.kes-settings-modal-content');
-            const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
+    // if (!eventListenerCheckbox) {
+    //     eventListenerCheckbox = (e) => {
+    //         const transCheckbox = document.querySelector('label input[kes-key="transCheckbox"]');
+    //         const kesModalContent = document.querySelector('div.kes-settings-modal-content');
+    //         const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
         
-            if (e.target.type === 'checkbox' && e.target.getAttribute('kes-key') === 'transCheckbox') {
+    //         if (e.target.type === 'checkbox' && e.target.getAttribute('kes-key') === 'transCheckbox') {
         
-                if (transCheckbox.checked) {
-                    kesModalContent.style.backgroundColor = '#2c2c2c00';
-                    kesModalContainer.style.backgroundColor = 'transparent';
+    //             if (transCheckbox.checked) {
+    //                 kesModalContent.style.backgroundColor = '#2c2c2c00';
+    //                 kesModalContainer.style.backgroundColor = 'transparent';
         
-                } else {
-                    kesModalContent.style.backgroundColor = '';
-                    kesModalContainer.style.backgroundColor = '';
-                }
+    //             } else {
+    //                 kesModalContent.style.backgroundColor = '';
+    //                 kesModalContainer.style.backgroundColor = '';
+    //             }
         
-                e.stopPropagation();
-            }
+    //             e.stopPropagation();
+    //         }
         
         
-        }
+    //     }
         
-        document.addEventListener('click', eventListenerCheckbox);
-    }
+    //     document.addEventListener('click', eventListenerCheckbox);
+    // }
 
-    function revertSizes() {
-        resizeHeaderElems.style.setProperty('font-size', initial);
+    let opacity = settings.opacity;
+    const kesModalContent = document.querySelector('div.kes-settings-modal-content');
+    const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
 
-    }
+    kesModalContent.style.setProperty('opacity', opacity);
+    KesModalContainer.style.setProperty('opacity', opacity);
 
 
 } // end of resizeText() function //
