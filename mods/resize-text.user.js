@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.13.2
+// @version      0.13.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -487,8 +487,8 @@ function resizeText() {
     const kesModalContent = document.querySelector('div.kes-settings-modal-content');
     const kesModalContainer = document.querySelector('div.kes-settings-modal-container');
 
-    kesModalContent.style.setProperty('opacity', opacity);
-    kesModalContainer.style.setProperty('opacity', opacity);
+    kesModalContent.style.setProperty('opacity', opacity / 10);
+    kesModalContainer.style.setProperty('opacity', opacity / 10);
 
 
 } // end of resizeText() function //
