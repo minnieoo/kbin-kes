@@ -603,7 +603,7 @@
       },
       {
         "type": "number",
-        "initial": 16,
+        "initial": 14,
         "key": "optionUserSettings",
         "label": "Settings:",
         "step": "0.1",
@@ -657,7 +657,7 @@
       },
       {
         "type": "number",
-        "initial": 16,
+        "initial": 14,
         "key": "optionMagSidebar",
         "label": "Magazine Sidebar:",
         "step": "0.1",
@@ -675,7 +675,7 @@
       },
       {
         "type": "number",
-        "initial": 16,
+        "initial": 14,
         "key": "optionCreate",
         "label": "Create (threads, mags, links, etc):",
         "step": "0.1",
@@ -684,7 +684,7 @@
       },
       {
         "type": "number",
-        "initial": 16,
+        "initial": 14,
         "key": "optionProfile",
         "label": "Profiles:",
         "step": "0.1",
@@ -693,7 +693,7 @@
       },
       {
         "type": "number",
-        "initial": 16,
+        "initial": 14,
         "key": "optionMessages",
         "label": "Messages:",
         "step": "0.1",
@@ -702,7 +702,7 @@
       },
       {
         "type": "number",
-        "initial": 13,
+        "initial": 14,
         "key": "optionFooter",
         "label": "Footer:",
         "step": "0.1",
