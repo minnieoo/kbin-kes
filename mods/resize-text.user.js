@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.14.2
+// @version      0.14.3
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -31,7 +31,8 @@ function resizeText() {
         userMessages: `${settings["optionMessages"]}px`,
         userNotifs: `${settings["optionNotifs"]}px`,
         sortBy: `${settings["optionSortBy"]}px`,
-        footer: `${settings["optionFooter"]}px`
+        footer: `${settings["optionFooter"]}px`,
+        activity: `${settings["optionActivity"]}px`
       };
 
 
@@ -455,6 +456,17 @@ function resizeText() {
         })
     })
 
+// === ACTIVITY === //
+    const activity = document.querySelectorAll('div.section.users.users-columns');
+
+    // create posts *loops*
+    activity.forEach(activityElem => {
+        const activityElement = activityElem.querySelectorAll('ul, li, small, a, img');
+
+        activityElement.forEach(activityResize => {
+                activityResize.style.setProperty('font-size', fontSizes.activity);
+        })
+    });
 
 // === OPACITY FUNCTIONALITY === //
     let opacity = settings.opacity;

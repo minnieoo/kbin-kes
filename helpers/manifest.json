@@ -582,6 +582,7 @@
       "optionSortBy",
       "optionNotifs",
       "optionFooter",
+      "optionActivity",
       "opacity"
     ],
     "fields": [
@@ -624,6 +625,15 @@
         "initial": 14,
         "key": "optionComments",
         "label": "Comments:",
+        "step": "0.1",
+        "min": "5",
+        "max": "50"
+      },
+      {
+        "type": "number",
+        "initial": 14,
+        "key": "optionActivity",
+        "label": "Activity:",
         "step": "0.1",
         "min": "5",
         "max": "50"
