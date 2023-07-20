@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change font size
 // @namespace    https://github.com/aclist
-// @version      0.12.9
+// @version      0.13.0
 // @description  Change the size of comment text.
 // @author       minnieo
 // @match        https://kbin.social/*
@@ -216,7 +216,7 @@ function resizeText() {
         const createPostElement = createPostElem.querySelectorAll('label, markdown-toolbar, ul, li, button, i, textarea[placeholder="Body"], input[placeholder="Select a magazine"], select[id^="entry_"][id$="_lang"], input.image-input');
 
         createPostElement.forEach(createPostResize => {
-            createPostResize.style.setProperty('font-sizes', fontSizes.createPosts);
+            createPostResize.style.setProperty('font-size', fontSizes.createPosts);
         })
     });
 
@@ -224,7 +224,7 @@ function resizeText() {
         const createMicroBlogElement = createMicroElem.querySelectorAll('markdown-toolbar, ul, li, button, i, label, input, input#post_magazine_autocomplete-ts-control, select[id="post_lang"], input.image-input');
 
         createMicroBlogElement.forEach(microBlogResize => {
-            microBlogResize.style.setProperty('font-sizes', fontSizes.createPosts);
+            microBlogResize.style.setProperty('font-size', fontSizes.createPosts);
         })
 
     });
