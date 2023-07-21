@@ -7,7 +7,7 @@
 }
 
 #kes-settings {
-    color: red;
+    color: var(--kbin-header-link-color);
     border-bottom: 3px solid transparent;
 }
 
@@ -42,7 +42,7 @@ span.kes-update {
     position: absolute;
 }
 #kes-settings:hover .kes-update-available {
-    color: red;
+    color: var(--kbin-success-color);
 }
 .kes-transparent-mode-modal {
     position: fixed;
