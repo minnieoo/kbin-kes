@@ -592,8 +592,7 @@
       "optionSortBy",
       "optionNotifs",
       "optionFooter",
-      "optionActivity",
-      "opacity"
+      "optionActivity"
     ],
     "fields": [
       {
