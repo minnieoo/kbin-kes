@@ -125,20 +125,6 @@ span.kes-update {
     }
 }
 
-media (max-width: 576px) {
-  .kes-settings-modal-header {
-    padding: 0.5rem; /* Adjust the padding as needed */
-    font-size: 1rem; /* Adjust the font size as needed */
-  }
-}
-
-@media (max-width: 576px) {
-  .kes-settings-modal-bug-icon {
-    float: none; /* Remove the float on mobile */
-    margin-top: 1rem; /* Adjust the margin as needed */
-    text-align: center; /* Align the icon to the center */
-  }
-}
 
 /* Medium devices (tablets, 1367px and below) */
 @media (max-width: 1367px) {
