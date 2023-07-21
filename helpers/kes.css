@@ -42,7 +42,7 @@ span.kes-update {
     position: absolute;
 }
 #kes-settings:hover .kes-update-available {
-    color: var(--kbin-success-color);
+    color: red;
 }
 .kes-transparent-mode-modal {
     position: fixed;
