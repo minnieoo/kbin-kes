@@ -7,7 +7,7 @@
 }
 
 #kes-settings {
-    color: var(--kbin-header-link-color);
+    color: red;
     border-bottom: 3px solid transparent;
 }
 
