@@ -22,7 +22,30 @@ function applyOutlines() {
     }
 
     // apply outlines to elements
-    const selectors = 'a:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, img:hover, button:hover, label:hover, markdown-toolbar:hover, textarea:hover, i:hover, time:hover, small:hover, div.content:hover, ul:hover, li:hover, span:hover, figure:hover, input:hover';
+    const sels = [
+        "a",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "img",
+        "button",
+        "label",
+        "markdown-toolbar",
+        "textarea",
+        "i",
+        "time",
+        "small",
+        "div.content",
+        "ul",
+        "li",
+        "span",
+        "figure"
+    ]
+    
+    const selectors = sels.join(':hover, ');
     const outline = `${selectors} { outline: ${thickness}px solid ${color};}`;
     const border = `p:not(div.content p):hover { border: ${thickness}px solid ${color};}`;
 
