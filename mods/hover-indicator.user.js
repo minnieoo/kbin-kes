@@ -16,11 +16,17 @@ function applyOutlines() {
     const color = settings.color;
     const thickness = settings.thickness;
 
+    // remove the existing style element if it exists
+    if (styleElement && styleElement.parentNode) {
+        styleElement.parentNode.removeChild(styleElement);
+    }
+
     // apply outlines to elements
     const selectors = 'a:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, img:hover, button:hover, label:hover, markdown-toolbar:hover, textarea:hover, i:hover, time:hover, small:hover, div.content:hover, ul:hover, li:hover, span:hover, figure:hover, input:hover';
-    styleElement = document.createElement('style');
     const outline = `${selectors} { outline: ${thickness}px solid ${color};}`;
     const border = `p:not(div.content p):hover { border: ${thickness}px solid ${color};}`;
+
+    styleElement = document.createElement('style');
     styleElement.innerText = outline + border;
     document.head.appendChild(styleElement);
 }
@@ -28,12 +34,7 @@ function applyOutlines() {
 function hoverIndicator(toggle) {
     if (toggle) {
         applyOutlines();
-        console.log('ON')
     } else {
-        if (styleElement) {
         document.head.removeChild(styleElement);
-        styleElement = null;
-        console.log('OFF')
-        }
     }
 }
