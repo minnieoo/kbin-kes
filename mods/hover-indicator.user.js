@@ -42,7 +42,11 @@ function applyOutlines() {
         "ul",
         "li",
         "span",
-        "figure"
+        "figure",
+        "input",
+        "div.checkbox",
+        "div.ts-control"
+
     ]
     
     const selectors = sels.join(':hover, ');
