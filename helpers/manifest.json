@@ -764,7 +764,7 @@
     "desc": "Apply an outline to elements that are being hovered over.",
     "namespace": "hover",
     "entrypoint": "hoverIndicator",
-    "page": "accesibility",
+    "page": "accessibility",
     "fields": [
       {
         "type": "color",
