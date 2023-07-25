@@ -758,7 +758,7 @@
     "name": "Hover indicator",
     "author": "minnieo",
     "version": "0.1.0",
-    "label": "Apply outline to hovered elements",
+    "label": "Hover indicator",
     "login": false,
     "recurs": false,
     "desc": "Apply an outline to elements that are being hovered over.",
