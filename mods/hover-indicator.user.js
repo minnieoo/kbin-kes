@@ -45,7 +45,7 @@ function applyOutlines() {
         "figure",
         "input",
         "div.checkbox",
-        "div.ts-control"
+        "div.ts-wrapper"
 
     ]
     
