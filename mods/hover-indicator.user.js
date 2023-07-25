@@ -29,6 +29,8 @@ function hoverIndicator(toggle) {
     if (toggle) {
         applyOutlines();
     } else {
+        if(styleElement) {
         document.head.removeChild(styleElement);
+        }
     }
 }
