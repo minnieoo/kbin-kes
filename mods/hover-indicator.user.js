@@ -28,10 +28,12 @@ function applyOutlines() {
 function hoverIndicator(toggle) {
     if (toggle) {
         applyOutlines();
+        console.log('ON')
     } else {
         if (styleElement) {
         document.head.removeChild(styleElement);
         styleElement = null;
+        console.log('OFF')
         }
     }
 }
