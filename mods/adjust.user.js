@@ -42,7 +42,7 @@ function adjustSite (toggle) {
                 color: ${downvoteCol};
                 ${settings.border ? `border: 2px solid ${downvoteCol};` : ''}
             }
-            .entry footer menu > a.active, .entry footer menu > li button.active {
+            .comment menu > a.active, .comment menu > li button.active {
                 color: ${boostCol};
                 text-decoration: none;
             }
